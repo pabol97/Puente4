@@ -6,7 +6,7 @@ package campinggas;
 
 /**
  *
- * @author pablo
+ * @author pablo, david, carlos, pedro y raul
  */
 public class CampingGas {
 
