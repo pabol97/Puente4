@@ -37,6 +37,7 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField1.setText("Bienvenido a CAMPING PARTY");
 
@@ -53,7 +54,13 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
                 {null, null, null, null, null},
                 {null, null, null, null, "RESERVADO"},
                 {null, null, null, null, null},
-                {null, "RESERVADO", null, null, null}
+                {null, "RESERVADO", null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
                 "Calle 1", "Calle 2", "Calle 3", "Calle 4", "Calle 5"
@@ -80,14 +87,14 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(320, 320, 320)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,9 +102,9 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 

@@ -41,6 +41,7 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("CAMPING PARTY");
@@ -50,6 +51,7 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
             }
         });
 
+        jTextField2.setEditable(false);
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField2.setText("Usuario:");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -58,6 +60,7 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
             }
         });
 
+        jTextField3.setEditable(false);
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField3.setText("Contraseña:");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -143,11 +146,15 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         HubAdemin_View ventanRaul = new HubAdemin_View();
+        ventanRaul.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         DisponibilidadCliente ventanaPablo = new DisponibilidadCliente();
+        ventanaPablo.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
