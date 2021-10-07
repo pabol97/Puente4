@@ -145,7 +145,7 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        HubAdemin_View ventanRaul = new HubAdemin_View();
+        HubAdmin_View ventanRaul = new HubAdmin_View();
         ventanRaul.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
