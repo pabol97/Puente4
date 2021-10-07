@@ -10,10 +10,16 @@ package campinggas;
  * @author alumno
  */
 public class CampingGas {
-    public void main(String args[]){
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
         VentanaPrincipalView yoLoHagoEnCMasPlas = new VentanaPrincipalView();
         /*********************************************************
          * https://github.com/pabol97/Puente4.git
          */
     }
+    
 }
