@@ -14,6 +14,11 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
     /**
      * Creates new form DisponibilidadCliente
      */
+    
+    
+    
+    //comprobar disponibles y enseñar por pantalla 
+    
     public DisponibilidadCliente() {
         initComponents();
     }

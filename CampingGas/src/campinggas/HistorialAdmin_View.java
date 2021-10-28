@@ -5,6 +5,7 @@
  */
 package campinggas;
 
+import Modelo.Reserva;
 import java.util.Date;
 import javax.swing.JList;
 
