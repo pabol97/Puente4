@@ -5,21 +5,43 @@
  */
 package campinggas;
 
+import java.util.Date;
+import javax.swing.JList;
+
 /**
  *
  * @author alumno
  */
 public class HistorialAdmin_View extends javax.swing.JFrame {
-
+    private String [] reservas;
     /**
      * Creates new form HistorialAdmin_View
      */
     public HistorialAdmin_View() {
         initComponents();
+        
+        //Inicializar reservas con los datos del modelo
+        
+        jList1 = new JList(reservas); 
     }
     
-    public boolean addReserva(){
+    public boolean addReserva(Reserva reserva){
+        Date fecha_entrada = reserva.getFechaEntrada();
+        Date fecha_salida = reserva.getFechaSalida();
+        String nombre = reserva.getNombre();
+
+        //La fecha de entrada es algún día aneterior o el propio dia
+        if(!reserva.comprobarFechas())
+            return false;
         
+        //Calcular el precio
+        //if(reserva.calc_precio() < 0)
+            //return false;
+        
+        //Se añade a la lista
+        //jList1.addElement(reserva.toString());
+        
+        return true;
     }
 
     /**
