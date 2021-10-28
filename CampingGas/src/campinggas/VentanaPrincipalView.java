@@ -13,6 +13,15 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipalView
      */
+        String usuarioAdminPredef = "admin";
+        String contraseñaAdminPredef = "admin";
+        String usuarioUserPredef = "user";
+        String contraseñaUserPredef = "user";
+    
+        String usuario;
+        String contrasenya;
+    
+    
     public VentanaPrincipalView() {
         initComponents();
         
@@ -34,8 +43,7 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jTextField4.setText("jTextField4");
 
@@ -69,17 +77,17 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Login Cliente");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField5.setNextFocusableComponent(jTextField6);
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jTextField5ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Login Admin");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("Login");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -94,11 +102,6 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 171, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(138, 138, 138))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField3)
                             .addComponent(jTextField2))
@@ -106,7 +109,11 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                             .addComponent(jTextField5))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(138, 437, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(394, 394, 394))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,11 +128,9 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField6)
                     .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(43, 43, 43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -143,19 +148,38 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        HubAdmin_View ventanRaul = new HubAdmin_View();
-        ventanRaul.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        usuario = jTextField5.getText();
+        contrasenya = jTextField6.getText();
+        
+        System.out.println(usuario);
+        System.out.println(contrasenya);
+        
+        if( (usuario.equals(usuarioAdminPredef)) )
+            if(contrasenya.equals(contraseñaAdminPredef))
+            {
+                HubAdmin_View ventanRaul = new HubAdmin_View();
+                ventanRaul.setVisible(true);
+                this.dispose();
+            }
+                
+        if( usuario.equals(usuarioUserPredef) )
+            if(contrasenya.equals( contraseñaUserPredef) )
+            {
+                DisponibilidadCliente ventanaPablo = new DisponibilidadCliente();
+                ventanaPablo.setVisible(true);
+                this.dispose();
+            }
+        
+    
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
-        DisponibilidadCliente ventanaPablo = new DisponibilidadCliente();
-        ventanaPablo.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+       
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,8 +217,7 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
