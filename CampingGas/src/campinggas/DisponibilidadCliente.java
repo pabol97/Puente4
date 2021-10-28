@@ -5,6 +5,11 @@
  */
 package campinggas;
 
+import Modelo.Parcelas;
+import Modelo.Reserva;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author alumno
@@ -14,13 +19,22 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
     /**
      * Creates new form DisponibilidadCliente
      */
-    
-    
+    Parcelas parcelas = new Parcelas();
+    Reserva[][] reserva;
     
     //comprobar disponibles y enseñar por pantalla 
     
     public DisponibilidadCliente() {
+        this.reserva = new Reserva[parcelas.getFilas()][parcelas.getColumna()];
         initComponents();
+        reserva = parcelas.getListaReservas();
+        
+        String[] nomCols = {};
+        for(int i = 0; i < parcelas.getColumna(); i++)
+            nomCols[i] += "Col " + i;
+        
+        DefaultTableModel modelo = new DefaultTableModel(reserva, nomCols);
+         jTable1 = new JTable(modelo);
     }
 
     /**
@@ -45,6 +59,11 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
         jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextField1.setText("Bienvenido a CAMPING PARTY");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,6 +145,10 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();     
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments

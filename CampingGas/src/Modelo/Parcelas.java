@@ -19,7 +19,7 @@ public class Parcelas {
     
     //para el constructor -> recorrer el fichero de datos en orden e ir guardando cada dato
     
-    boolean setReserva(int fila, int columna, Reserva r){
+    public boolean setReserva(int fila, int columna, Reserva r){
         boolean sePuedeReservar = false;
         if(parcelas[fila][columna] == null)
         {
@@ -30,19 +30,19 @@ public class Parcelas {
         return sePuedeReservar; 
     }
     
-    int getFilas(){
+    public int getFilas(){
         return filas;
     }
     
-    int getColumna(){
+    public int getColumna(){
         return columnas;
     }
     
-    Reserva[][] getListaReservas(){
+    public Reserva[][] getListaReservas(){
         return parcelas;
     }
     
-    Reserva getReserva(int fila, int columna){
+    public Reserva getReserva(int fila, int columna){
             return parcelas[fila][columna];
     }
     
