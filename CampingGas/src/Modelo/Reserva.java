@@ -40,7 +40,17 @@ public class Reserva {
         return false;
     }
     
-    //public float calc_precio(){
-        //int dias = (int) ((fechaInicio.getTime() - fechaactual.getTime()));
-    //}
+    public float calcPrecio(){
+        float dias = (int) ((fecha_entrada.getTime() - fecha_salida.getTime()));
+        
+        if(dias >= 15){
+            dias = (float) (dias*0.85);
+        }
+        
+        return dias;
+    }
+    
+    public String toString(){
+        return getNombre() + " tiene una reserva del dia " + getFechaEntrada() + " al dia " + getFechaSalida() + " por " + calcPrecio() + " bitcoins";
+    }
 }

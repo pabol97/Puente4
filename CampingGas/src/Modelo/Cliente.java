@@ -11,6 +11,7 @@ package Modelo;
  */
 public class Cliente {
     private String nombre;
+    private boolean sancion = false;
     
     public Cliente(String nombre){
         this.nombre = nombre;
@@ -18,5 +19,9 @@ public class Cliente {
     
     public String getNombre(){
         return nombre;
+    }
+    
+    public void aplicarSancion(){
+        sancion = true;
     }
 }

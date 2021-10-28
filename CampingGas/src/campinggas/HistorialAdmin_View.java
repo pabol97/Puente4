@@ -7,6 +7,7 @@ package campinggas;
 
 import Modelo.Reserva;
 import java.util.Date;
+import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
 /**
@@ -14,7 +15,7 @@ import javax.swing.JList;
  * @author alumno
  */
 public class HistorialAdmin_View extends javax.swing.JFrame {
-    private String [] reservas;
+    DefaultListModel reservasList;
     /**
      * Creates new form HistorialAdmin_View
      */
@@ -23,7 +24,7 @@ public class HistorialAdmin_View extends javax.swing.JFrame {
         
         //Inicializar reservas con los datos del modelo
         
-        jList1 = new JList(reservas); 
+        jList1 = new JList(reservasList); 
     }
     
     public boolean addReserva(Reserva reserva){
@@ -36,11 +37,13 @@ public class HistorialAdmin_View extends javax.swing.JFrame {
             return false;
         
         //Calcular el precio
-        //if(reserva.calc_precio() < 0)
-            //return false;
+        if(reserva.calcPrecio() < 0)
+            return false;
+        
+        reservasList.addElement(reserva.toString());
         
         //Se añade a la lista
-        //jList1.addElement(reserva.toString());
+        jList1.setModel(reservasList);
         
         return true;
     }

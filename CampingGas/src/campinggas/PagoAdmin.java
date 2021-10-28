@@ -5,6 +5,9 @@
  */
 package campinggas;
 
+import Modelo.Cliente;
+import java.util.ArrayList;
+
 /**
  *
  * @author Jordi
@@ -14,6 +17,8 @@ public class PagoAdmin extends javax.swing.JFrame {
     /**
      * Creates new form PagoAdmin
      */
+    private ArrayList<Cliente> clientes;
+    
     public PagoAdmin() {
         initComponents();
     }
@@ -66,6 +71,11 @@ public class PagoAdmin extends javax.swing.JFrame {
 
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton6.setText("Registrar Pago");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setText("jTextField1");
 
@@ -140,6 +150,14 @@ public class PagoAdmin extends javax.swing.JFrame {
         admin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Cliente cliente = new Cliente(jList1.getSelectedValue().toString());
+        
+        
+        
+                
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
