@@ -17,6 +17,10 @@ public class HistorialAdmin_View extends javax.swing.JFrame {
     public HistorialAdmin_View() {
         initComponents();
     }
+    
+    public boolean addReserva(){
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
