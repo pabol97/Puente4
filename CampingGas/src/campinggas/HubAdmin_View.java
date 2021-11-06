@@ -5,12 +5,15 @@
  */
 package campinggas;
 
+import Modelo.Modelo;
+
 /**
  *
  * @author alumno
  */
 public class HubAdmin_View extends javax.swing.JFrame {
 
+    Modelo modelo = new Modelo();
     /**
      * Creates new form Gerente
      */
@@ -125,17 +128,17 @@ public class HubAdmin_View extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AlquilerAdmin_View alquilerAdmin = new AlquilerAdmin_View();
-        alquilerAdmin.setVisible(true);
+        //AlquilerAdminView alquilerAdmin = new AlquilerAdminView();
+        //alquilerAdmin.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        HistorialAdmin_View historial = new HistorialAdmin_View();
+        HistorialAdmin_View historial = new HistorialAdmin_View(modelo);
         historial.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        PagoAdmin pago =  new PagoAdmin();
+        PagoAdmin pago =  new PagoAdmin(modelo);
         pago.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -143,42 +146,6 @@ public class HubAdmin_View extends javax.swing.JFrame {
         ActividadesAdmin act = new ActividadesAdmin();
         act.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HubAdmin_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HubAdmin_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HubAdmin_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HubAdmin_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HubAdmin_View().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

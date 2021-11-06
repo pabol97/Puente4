@@ -5,26 +5,53 @@
  */
 package Modelo;
 
+import Modelo.Cliente;
+import Modelo.Cliente;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
  *
- * @author Carlos
+ * @author alumno
  */
 public class Actividad {
-    private Date fecha;
-    private String lugar;
     
-    public Actividad(Date fecha, String lugar){
-        this.fecha = fecha;
-        this.lugar = lugar;
+    String tituloActividad;
+    ArrayList<Cliente> clientesApuntados = new ArrayList<Cliente>();
+    Calendar fecha;
+    String lugar;
+    
+    public Actividad(String _tituloActividad, Calendar _fecha){
+        tituloActividad = _tituloActividad;
+        fecha = _fecha;
+        lugar = "Canada";
+        
+        Cliente cliente = new Cliente("Pedro");
+        Cliente cliente2 = new Cliente("Carlos");
+        Cliente cliente3 = new Cliente("David");
+        Cliente cliente4 = new Cliente("Raul");
+        
+        clientesApuntados.add(cliente);
+        clientesApuntados.add(cliente2);
+        clientesApuntados.add(cliente3);
+        clientesApuntados.add(cliente4);
     }
     
-    public Date getFecha(){
+    public String getTitulo() {
+        return tituloActividad;
+    }
+
+    public ArrayList<Cliente> getListaClientes() {
+        return clientesApuntados;
+    }
+
+    public Object getFecha() {
         return fecha;
     }
-    
-    public String getLugar(){
+
+    public String getLugar() {
         return lugar;
     }
 }
+

@@ -163,8 +163,8 @@ public class PagoAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        reserva = new Reserva(clientes.get(jList1.getSelectedIndex()), dateChooserCombo1.getDate(), 
-                dateChooserCombo2.getDate());
+        //reserva = new Reserva(clientes.get(jList1.getSelectedIndex()), dateChooserCombo1.getDate(), 
+                //dateChooserCombo2.getDate());
         jTextField1.setText(reserva.calcPrecio() + "");
         precioCalculado = true;
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -97,6 +97,7 @@ public class HistorialAdmin_View extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        /*
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -114,7 +115,7 @@ public class HistorialAdmin_View extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(HistorialAdmin_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        */
         /* Create and display the form */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

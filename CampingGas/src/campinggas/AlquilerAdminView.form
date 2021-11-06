@@ -37,20 +37,14 @@
                                       <Component id="jButton4" min="-2" pref="154" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                          </Group>
+                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jDateChooser1" min="-2" pref="156" max="-2" attributes="0"/>
-                                          <Component id="jDateChooser2" min="-2" pref="156" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -102,15 +96,9 @@
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDateChooser2" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jButton4" pref="57" max="32767" attributes="0"/>
                   </Group>
@@ -239,10 +227,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="FechaFin"/>
       </Properties>
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
-    </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
     </Component>
   </SubComponents>
 </Form>

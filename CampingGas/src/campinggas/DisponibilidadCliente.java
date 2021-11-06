@@ -137,8 +137,8 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        EspecsParcelaView ventanaDavid = new EspecsParcelaView();
-        ventanaDavid.setVisible(true);
+        //EspecsParcelaView ventanaDavid = new EspecsParcelaView();
+        //ventanaDavid.setVisible(true);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
