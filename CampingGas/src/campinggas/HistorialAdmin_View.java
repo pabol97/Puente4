@@ -5,7 +5,7 @@
  */
 package campinggas;
 
-import Modelo.Reserva;
+import Modelo.*;
 import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -16,38 +16,19 @@ import javax.swing.JList;
  */
 public class HistorialAdmin_View extends javax.swing.JFrame {
     DefaultListModel reservasList;
+    Modelo modelo;
     /**
      * Creates new form HistorialAdmin_View
      */
-    public HistorialAdmin_View() {
+    public HistorialAdmin_View(Modelo modelo) {
         initComponents();
-        
+        this.modelo = modelo;
+        reservasList.addAll(0, modelo.getReservasCompletadas());
         //Inicializar reservas con los datos del modelo
         
         jList1 = new JList(reservasList); 
     }
     
-    public boolean addReserva(Reserva reserva){
-        Date fecha_entrada = reserva.getFechaEntrada();
-        Date fecha_salida = reserva.getFechaSalida();
-        String nombre = reserva.getNombre();
-
-        //La fecha de entrada es algún día aneterior o el propio dia
-        if(!reserva.comprobarFechas())
-            return false;
-        
-        //Calcular el precio
-        if(reserva.calcPrecio() < 0)
-            return false;
-        
-        reservasList.addElement(reserva.toString());
-        
-        //Se añade a la lista
-        jList1.setModel(reservasList);
-        
-        return true;
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,7 +91,7 @@ public class HistorialAdmin_View extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -135,12 +116,6 @@ public class HistorialAdmin_View extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HistorialAdmin_View().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
