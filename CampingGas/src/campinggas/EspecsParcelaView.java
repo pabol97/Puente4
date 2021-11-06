@@ -22,19 +22,8 @@ public class EspecsParcelaView extends javax.swing.JFrame {
     Cliente cliente;
     Modelo modelo;
     
-    public EspecsParcelaView(Parcelas parcela,Modelo modelo, Cliente cliente) {
+    public EspecsParcelaView() {
         initComponents();
-        this.cliente = cliente;
-        this.modelo = modelo;
-        
-        reservas = parcela.getListaReservas();
-        
-        for(int i = 0; i < reservas.length; i++)
-            for(int j = 0; j < reservas.length; j++){
-                reservasList.addElement(reservas[i][i]);
-            }
-        
-        jList1.setModel(reservasList);
     }
 
     /**
