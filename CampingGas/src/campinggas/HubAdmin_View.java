@@ -6,6 +6,7 @@
 package campinggas;
 
 import Modelo.Modelo;
+import Modelo.Parcelas;
 
 /**
  *
@@ -14,6 +15,7 @@ import Modelo.Modelo;
 public class HubAdmin_View extends javax.swing.JFrame {
 
     Modelo modelo = new Modelo();
+    Parcelas parcela = new Parcelas();
     /**
      * Creates new form Gerente
      */
@@ -128,8 +130,8 @@ public class HubAdmin_View extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //AlquilerAdminView alquilerAdmin = new AlquilerAdminView();
-        //alquilerAdmin.setVisible(true);
+        AlquilerAdminView alquilerAdmin = new AlquilerAdminView(parcela);
+        alquilerAdmin.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
