@@ -15,7 +15,7 @@ public class Parcelas {
     
     int filas = 10;
     int columnas = 10;
-    Reserva[][] parcelas = new Reserva[filas][columnas];
+    Reserva[][] parcelas = new Reserva[filas][columnas]; //MATRIZ QUE REPRESENTA EL CAMPING; el tercer atributo son las reservas que tiene cada parcela.
     
     public int getFilas() {
         return filas;
@@ -37,29 +37,42 @@ public class Parcelas {
 
         public boolean addReserva(Reserva r){
             boolean sePuede = true;
-            for(int i = 0; i < reservas.length; i++){
-                //if (re){
-
-
+            boolean hayHuecos = false;
+            int r_fila, r_columna, numReservas, hueco = 0;
+            
+            int primerNull; //para poder ir rellenando los huecos
+            r_fila = r.getFila();
+            r_columna = r.getColumna();
+            numReservas = reservas.length; //Me llevo el numero de reservas que tengo guardado
+            
+            for(int i = 0; i < numReservas; i++){
+                if(sePuede){
+                    if(!hayHuecos && reservas[i] == null){
+                        hayHuecos = true;
+                        hueco = i;
+                    }
+                    else{
+                        //Si mi entrada está entre medias de una reserva = FALSE
+                        if(r.getFechaEntrada().compareTo(reservas[i].getFechaEntrada()) > 0 && r.getFechaEntrada().compareTo(reservas[i].getFechaSalida()) < 0) {
+                            sePuede = false;
+                        }
+                        //Si mi salida está entre medias de una reserva = FALSE
+                        else if(r.getFechaSalida().compareTo(reservas[i].getFechaEntrada()) < 0 && r.getFechaSalida().compareTo(reservas[i].getFechaSalida()) > 0)
+                            sePuede = false;
+                        //SI mi tengo entre medias de mi entrada y salida una reserva, FALSE.
+                        else if(r.getFechaEntrada().compareTo(reservas[i].getFechaEntrada()) < 0 && r.getFechaSalida().compareTo(reservas[i].getFechaSalida()) > 0)
+                            sePuede = false;
+                    }
+                }
             }
-            return true;
-        }
-
-
-
-        //todo lo que haya que guardar de cada parcela
-
-        //para el constructor -> recorrer el fichero de datos en orden e ir guardando cada dato
-
-        public boolean setReserva(int fila, int columna, Reserva r){
-            boolean sePuedeReservar = false;
-            if(parcelas[fila][columna] == null)
-            {
-                sePuedeReservar = true;
-                parcelas[fila][columna] = r;
+            if (sePuede){
+                if(hayHuecos){
+                    reservas[hueco] = r;
+                }
+                else
+                    reservas[numReservas] = r;
             }
-
-            return sePuedeReservar; 
+            return sePuede;
         }
 
         public Reserva getReserva(int fila, int columna){

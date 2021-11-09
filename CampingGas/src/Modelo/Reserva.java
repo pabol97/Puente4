@@ -13,12 +13,15 @@ import java.util.Date;
  */
 public class Reserva {
     private Cliente cliente;
+    private int parcelaFila, parcelaColumna; //Para poder comparar con las reservas de esa parcela.
     private Date fecha_entrada, fecha_salida;
     
-    public Reserva(Cliente cliente, Date fecha_entrada, Date fecha_salida){
+    public Reserva(Cliente cliente, Date fecha_entrada, Date fecha_salida, int parcelaFila, int parcelaColumna){
         this.cliente = cliente;
         this.fecha_entrada = fecha_entrada;
         this.fecha_salida = fecha_salida;
+        this.parcelaFila = parcelaFila;
+        this.parcelaColumna = parcelaColumna;
     }
     
     public String getNombre(){
@@ -31,6 +34,31 @@ public class Reserva {
     
     public Date getFechaSalida(){
         return fecha_salida;
+    }
+    public int getFila(){
+        return parcelaFila;
+    }
+    
+    public int getColumna(){
+        return parcelaColumna;
+    }
+    
+    public boolean setFila(int fila){
+        if (fila >= 0 || fila < 11)
+        {
+            parcelaFila = fila;
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean setColumna(int columna){
+        if (columna >= 0 || columna < 11)
+        {
+            parcelaFila = columna;
+            return true;
+        }
+        return false;
     }
     
     public boolean comprobarFechas(){
