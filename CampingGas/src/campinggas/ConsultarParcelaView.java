@@ -6,6 +6,7 @@
 package campinggas;
 
 import Modelo.Cliente;
+import Modelo.ListaReservas;
 import Modelo.Modelo;
 import Modelo.Parcelas;
 import Modelo.Reserva;
@@ -20,7 +21,7 @@ public class ConsultarParcelaView extends javax.swing.JFrame {
     /**
      * Creates new form ConsultarParcelaView
      */
-     private Reserva[][] reservas;
+    private ListaReservas[][] reservas;
     DefaultListModel reservasList;
     Cliente cliente;
     Modelo modelo;

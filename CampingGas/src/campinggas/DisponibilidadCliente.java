@@ -5,6 +5,7 @@
  */
 package campinggas;
 
+import Modelo.ListaReservas;
 import Modelo.Parcelas;
 import Modelo.Reserva;
 import javax.swing.JTable;
@@ -20,17 +21,17 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
      * Creates new form DisponibilidadCliente
      */
     Parcelas parcelas = new Parcelas();
-    Reserva[][] reserva;
+    ListaReservas[][] reserva;
     
     //comprobar disponibles y enseñar por pantalla
     
     public DisponibilidadCliente() {
-        this.reserva = new Reserva[parcelas.getFilas()][parcelas.getColumna()];
+        this.reserva = new ListaReservas[parcelas.getFilas()][parcelas.getColumnas()];
         initComponents();
         reserva = parcelas.getListaReservas();
         
         String[] nomCols = {};
-        for(int i = 0; i < parcelas.getColumna(); i++)
+        for(int i = 0; i < parcelas.getColumnas(); i++)
             nomCols[i] += "Col " + i;
         
         DefaultTableModel modelo = new DefaultTableModel(reserva, nomCols);
