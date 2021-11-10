@@ -35,6 +35,12 @@ public class Reserva {
     public Date getFechaSalida(){
         return fecha_salida;
     }
+    public void setFechas(Date fecha_e, Date fecha_s){
+        
+        fecha_entrada = fecha_e;
+        fecha_salida = fecha_s;
+        return;
+    }
     public int getFila(){
         return parcelaFila;
     }
