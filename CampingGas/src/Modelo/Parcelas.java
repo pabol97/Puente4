@@ -12,10 +12,20 @@ import java.util.Date;
  * @author alumno
  */
 public class Parcelas {
+    //ESTOS VALORES SE PUEDEN MODIFICAR Y CAMBIA LA TABLA
+    int filas;
+    int columnas;
+    ListaReservas[][] parcelas ; //MATRIZ QUE REPRESENTA EL CAMPING; el tercer atributo son las reservas que tiene cada parcela.
+   
+    public Parcelas(int filas, int columnas){
+        this.filas = filas;
+        this.columnas = columnas;
+        parcelas = new ListaReservas[filas][columnas]; //modelo.getListaReservas() ? 
+        
+       // parcelas.llenaDatosTest();
+        
+    }
     
-    int filas = 10;
-    int columnas = 10;
-    ListaReservas[][] parcelas = new ListaReservas[filas][columnas]; //MATRIZ QUE REPRESENTA EL CAMPING; el tercer atributo son las reservas que tiene cada parcela.
     public int getFilas() {
         return filas;
     }
@@ -32,5 +42,10 @@ public class Parcelas {
         return parcelas[fila][columna];
     }
     
+     public void setParcela(int fila, int columna, ListaReservas reservas){
+         parcelas[fila][columna] = reservas;
+    }
+    
+ 
     
 }

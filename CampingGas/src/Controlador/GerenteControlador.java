@@ -6,9 +6,14 @@
 package Controlador;
 
 import Modelo.Actividad;
+import Modelo.Cliente;
+import Modelo.ListaReservas;
+import Modelo.Parcelas;
+import Modelo.Reserva;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
 
 /**
  *
@@ -16,12 +21,15 @@ import java.util.Date;
  */
 public class GerenteControlador {
     ArrayList<Actividad> actividades = new ArrayList<Actividad>();
+    Parcelas parcelas = new Parcelas(10,10);
     
     public GerenteControlador(){
         Actividad act = new Actividad("Judo",null);
         Actividad act2 = new Actividad("Bolos",null);
         actividades.add(act);
         actividades.add(act2);
+        
+        llenaDatosTest(parcelas);
     }
     
     public ArrayList<Actividad> getActividades(){
@@ -32,4 +40,35 @@ public class GerenteControlador {
         Actividad act = new Actividad(titulo,fecha);
         actividades.add(act);
     }
+    
+    public Parcelas getParcelas()
+    {
+        return parcelas;
+    }
+    
+    public void llenaDatosTest(Parcelas parcelas){
+        
+        
+        
+        Date c = new Date(2021,11,5);
+        Date c2 = new Date(2021,11,15);
+
+        
+        Cliente cli = new Cliente("Test");
+        
+        Reserva r = new Reserva(cli,c,c2,1,1);
+        Reserva[] rs = new Reserva[1];
+        rs[0] = r;
+        ListaReservas l = new ListaReservas(rs);
+
+        l.addReserva(r);
+                
+        for(int i = 0; i < parcelas.getFilas(); i++)              //PARA RELLENAR LA MITAD
+            for(int j = 0; j < parcelas.getColumnas(); j++)         // DE LA MITAD
+            {
+                if(Math.random() < 0.5 )
+                parcelas.setParcela(i, j, l);
+            }
+    
+}
 }

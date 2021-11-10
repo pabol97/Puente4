@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -23,7 +24,7 @@ public class Reserva {
         this.parcelaFila = parcelaFila;
         this.parcelaColumna = parcelaColumna;
     }
-    
+        
     public String getNombre(){
         return cliente.getNombre();
     }

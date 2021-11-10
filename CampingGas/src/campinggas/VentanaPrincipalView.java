@@ -4,6 +4,8 @@
  */
 package campinggas;
 
+import Controlador.GerenteControlador;
+
 /**
  *
  * @author pablo
@@ -167,7 +169,8 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
         if( usuario.equals(usuarioUserPredef) )
             if(contrasenya.equals( contraseñaUserPredef) )
             {
-                DisponibilidadCliente ventanaPablo = new DisponibilidadCliente();
+                GerenteControlador controller = new GerenteControlador();
+                DisponibilidadCliente ventanaPablo = new DisponibilidadCliente(controller);
                 ventanaPablo.setVisible(true);
                 this.dispose();
             }

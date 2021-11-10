@@ -5,11 +5,17 @@
  */
 package campinggas;
 
+import Controlador.GerenteControlador;
 import Modelo.ListaReservas;
 import Modelo.Parcelas;
 import Modelo.Reserva;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -20,24 +26,81 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
     /**
      * Creates new form DisponibilidadCliente
      */
-    Parcelas parcelas = new Parcelas();
-    ListaReservas[][] reserva;
     
+    ListaReservas[][] reserva;
+    Date fechaIntroducida; 
+    Parcelas parcelas;
     //comprobar disponibles y enseñar por pantalla
     
-    public DisponibilidadCliente() {
-        this.reserva = new ListaReservas[parcelas.getFilas()][parcelas.getColumnas()];
-        initComponents();
-        reserva = parcelas.getListaReservas();
+    public DisponibilidadCliente(GerenteControlador controller) {
+        /*this.reserva = new ListaReservas[parcelas.getFilas()][parcelas.getColumnas()];
+        */
         
+        
+        
+        initComponents();
+        
+        parcelas = controller.getParcelas();
+        reserva = parcelas.getListaReservas();
+        fechaIntroducida = new Date(2021,11,11);
+        actualizaTabla();
+       
+        
+        //jTable1.setModel(modelo);
+        /*
+        TableModel datosTabla = new AbstractTableModel(){
+            public int getColumCount() { return parcelas.getColumnas(); }
+            public int getRowCount() { return parcelas.getFilas(); }
+            public boolean getValueAt(int fila, int col) { return estaOcupada(Date fechaIntroducida, fila, col);}  
+
+         
+        };
+        
+        /*dia del lab
         String[] nomCols = {};
         for(int i = 0; i < parcelas.getColumnas(); i++)
             nomCols[i] += "Col " + i;
         
         DefaultTableModel modelo = new DefaultTableModel(reserva, nomCols);
-         jTable1 = new JTable(modelo);
+         jTable1 = new JTable(modelo);*/
     }
 
+    public boolean estaOcupada(Date fecha, int fila, int col){
+        //para cada casilla ver si esta ocupada
+        boolean reservado = false;
+        
+        if(reserva[fila][col] != null){  //si hay alguna reserva de esa parcela
+            //System.out.println("parcela con reservas: FilaCol:" + fila + "," + col);
+            for(int i = 0; i < reserva[fila][col].numeroReservas() ; i++) //ver todas las reservas de una parcela
+            if(reservado == false)          //si hay alguna reserva ese dia no hace falta mirar las demás
+                if(!reserva[fila][col].getReserva(i).getNombre().equals("")){
+                    //System.out.println("NOMBRE:" + reserva[fila][col].getReserva(i).getNombre());
+                    if( (reserva[fila][col].getReserva(i).getFechaEntrada().before(fecha)) && (fecha.before( reserva[fila][col].getReserva(i).getFechaSalida()) )){   //ver si esta fecha esta dentro de alguna de la reserva i
+                       // if(reserva[fila][col].getReserva(i) != null) //
+                            reservado = true;
+                           // System.out.println("RESERVADO");
+                    }
+                }
+        }
+        return reservado;
+    } 
+    
+    public void actualizaTabla(){
+        
+       
+        
+        boolean a = false;
+        DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
+        modelo.setRowCount(parcelas.getFilas());
+        modelo.setColumnCount(parcelas.getColumnas());
+        
+        for(int i = 0; i <modelo.getRowCount(); i++)
+            for(int j = 0; j < modelo.getColumnCount(); j++){
+                
+                a = estaOcupada(fechaIntroducida, i, j);
+                modelo.setValueAt(a, i, j);
+                }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,10 +111,12 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        fechaChooser = new datechooser.beans.DateChooserCombo();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        fechaChooser1 = new datechooser.beans.DateChooserCombo();
 
         jButton1.setText("jButton1");
 
@@ -104,6 +169,17 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        fechaChooser1.addSelectionChangedListener(new datechooser.events.SelectionChangedListener() {
+            public void onSelectionChange(datechooser.events.SelectionChangedEvent evt) {
+                fechaChooser1OnSelectionChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,7 +191,10 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(465, 465, 465)
+                                .addComponent(fechaChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(320, 320, 320)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -129,7 +208,9 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechaChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -151,7 +232,19 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void fechaChooser1OnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_fechaChooser1OnSelectionChange
+        // TODO add your handling code here:
+        fechaIntroducida = new Date(fechaChooser.getSelectedDate().getTimeInMillis());
+    }//GEN-LAST:event_fechaChooser1OnSelectionChange
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private datechooser.beans.DateChooserCombo fechaChooser;
+    private datechooser.beans.DateChooserCombo fechaChooser1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;

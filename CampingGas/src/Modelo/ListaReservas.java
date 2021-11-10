@@ -11,23 +11,29 @@ package Modelo;
 public class ListaReservas {
     Reserva[] reservas;
 
-    public ListaReservas(){}
+    public ListaReservas(Reserva[] r){
+        reservas = r;
+    }
 
     public boolean addReserva(Reserva r){
         boolean sePuede = true;
+        boolean a = true;
         boolean hayHuecos = false;
         int r_fila, r_columna, numReservas, hueco = 0;
 
         int primerNull; //para poder ir rellenando los huecos
         r_fila = r.getFila();
         r_columna = r.getColumna();
+        
         numReservas = reservas.length; //Me llevo el numero de reservas que tengo guardado
 
+        
         for(int i = 0; i < numReservas; i++){
             if(sePuede){
                 if(!hayHuecos && reservas[i] == null){
                     hayHuecos = true;
-                    hueco = i;
+                    System.out.println("a");
+                    hueco = i; 
                 }
                 else{
                     //Si mi entrada está entre medias de una reserva = FALSE
@@ -48,12 +54,20 @@ public class ListaReservas {
                 reservas[hueco] = r;
             }
             else
-                reservas[numReservas] = r;
+                reservas[numReservas - 1] = r;
         }
         return sePuede;
     }
 
     public Reserva[] getReservas() {
         return reservas;
+    }
+    
+    public int numeroReservas(){
+        return reservas.length;
+    }
+    
+    public Reserva getReserva(int i){
+        return reservas[i];
     }
 }
