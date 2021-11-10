@@ -200,10 +200,17 @@ public class PagoAdmin extends javax.swing.JFrame {
         precioCalculado = true;
     }//GEN-LAST:event_jButton2ActionPerformed
     
-    private void Button3ActionPerformed(java.awt.event.ActionEvent evt)
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)
     {
-        
+        jDateChooser1.setDate(reserva.getFechaEntrada());
+        jDateChooser2.setDate(reserva.getFechaSalida());
     }
+    
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        reserva.setFechas(jDateChooser1.getDate(), jDateChooser2.getDate());
+    }
+    
     
     public boolean setReservaCompletada(Reserva reserva){
         Date fecha_entrada = reserva.getFechaEntrada();
