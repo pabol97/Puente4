@@ -226,6 +226,7 @@ public class AlquilerAdminView extends javax.swing.JFrame {
         
             switch(seleccion){
                 case "Nueva reserva.":
+                    //Recoges los datos introducidos
                     userCliente = userClienteField.getText();
                     Cliente cliente = new Cliente(userCliente);
                     
@@ -237,9 +238,14 @@ public class AlquilerAdminView extends javax.swing.JFrame {
                     fila = Integer.parseInt(partesSeleccion[0]);
                     columna = Integer.parseInt(partesSeleccion[1]);
                     
+                    //Creas y añades la nueva reserva
                     Reserva nuevaReserva = new Reserva(cliente, fechaIni, fechaFin, fila, columna);
-                    if(!listaReservaCamping[fila][columna].addReserva(nuevaReserva))
+                    if(!listaReservaCamping[fila][columna].addReserva(nuevaReserva)){
                         mensajeError.setVisible(true);
+                    }
+                    else{
+                        rellenarListaReservas(parcelas);
+                    }
                     break;
                 default:
                     partesSeleccion = seleccion.split(":");
@@ -281,6 +287,7 @@ public class AlquilerAdminView extends javax.swing.JFrame {
                 columna = -1;
                 pos = -1;
                 
+                //Ponemos datos vacios en la vista
                 userClienteField.setText(userCliente);
                 fechaInicioChooser.setDate(fechaIni);
                 fechaFinChooser.setDate(fechaFin);
@@ -301,6 +308,7 @@ public class AlquilerAdminView extends javax.swing.JFrame {
                 columna = Integer.parseInt(partesSeleccion[4]);
                 pos = Integer.parseInt(partesSeleccion[5]);
                 
+                //Lo ponemos en la vista
                 userClienteField.setText(userCliente);
                 fechaInicioChooser.setDate(fechaIni);
                 fechaFinChooser.setDate(fechaFin);

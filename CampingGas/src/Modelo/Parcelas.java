@@ -42,7 +42,7 @@ public class Parcelas {
         return parcelas[fila][columna];
     }
     
-     public void setParcela(int fila, int columna, ListaReservas reservas){
+     public void setReservaAParcela(int fila, int columna, ListaReservas reservas){
          parcelas[fila][columna] = reservas;
     }
     
@@ -51,6 +51,15 @@ public class Parcelas {
         sePuede = parcelas[fila][columna].addReserva(r);
         
         return sePuede;
+    }
+
+    public void establecerCoherencia() {
+        for(int i = 0; i < getFilas(); i++){
+            for(int j = 0; j < getColumnas(); j++){
+                if(parcelas[i][j] != null) //Si tiene reservas
+                    parcelas[i][j].setFilasYColumnasEnReservas(i, j);
+            }
+        }
     }
     
 }

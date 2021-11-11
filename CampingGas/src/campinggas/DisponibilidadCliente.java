@@ -42,7 +42,7 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
         
         parcelas = controller.getParcelas();
         reserva = parcelas.getListaReservas();
-        fechaIntroducida = new Date(2021,11,11);
+        fechaIntroducida = new Date();
         actualizaTabla();
        
         
@@ -75,7 +75,7 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
             if(reservado == false)          //si hay alguna reserva ese dia no hace falta mirar las demás
                 if(!reserva[fila][col].getReserva(i).getNombre().equals("")){
                     //System.out.println("NOMBRE:" + reserva[fila][col].getReserva(i).getNombre());
-                    if( (reserva[fila][col].getReserva(i).getFechaEntrada().before(fecha)) && (fecha.before( reserva[fila][col].getReserva(i).getFechaSalida()) )){   //ver si esta fecha esta dentro de alguna de la reserva i
+                    if((reserva[fila][col].getReserva(i).getFechaEntrada().before(fecha)) && (fecha.before( reserva[fila][col].getReserva(i).getFechaSalida()) )){   //ver si esta fecha esta dentro de alguna de la reserva i
                        // if(reserva[fila][col].getReserva(i) != null) //
                             reservado = true;
                            // System.out.println("RESERVADO");

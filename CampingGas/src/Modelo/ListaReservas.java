@@ -70,4 +70,11 @@ public class ListaReservas {
     public Reserva getReserva(int i){
         return reservas[i];
     }
+
+    void setFilasYColumnasEnReservas(int filas, int columnas) {
+        for(int i = 0; i < numeroReservas(); i++){
+            reservas[i].setFila(filas);
+            reservas[i].setColumna(columnas);
+        }
+    }
 }

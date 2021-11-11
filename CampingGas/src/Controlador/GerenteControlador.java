@@ -58,6 +58,7 @@ public class GerenteControlador {
         
         Cliente cli = new Cliente("Test");
         
+        
         Reserva r = new Reserva(cli,c,c2,1,1);
         Reserva[] rs = new Reserva[1];
         rs[0] = r;
@@ -68,8 +69,10 @@ public class GerenteControlador {
         for(int i = 0; i < parcelas.getFilas(); i++)              
             for(int j = 0; j < parcelas.getColumnas(); j++)         
             {
+                
                 if(Math.random() < 0.5 )
-                parcelas.setParcela(i, j, l);
+                parcelas.setReservaAParcela(i, j, l);
+                //parcelas.establecerCoherencia();
             }
     
 }
