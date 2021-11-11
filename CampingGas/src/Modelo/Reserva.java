@@ -24,6 +24,20 @@ public class Reserva {
         this.parcelaFila = parcelaFila;
         this.parcelaColumna = parcelaColumna;
     }
+    public Reserva()
+    {
+        Cliente cliente = new Cliente("Juan");
+        Date fecha_entrada = new Date();
+        Date fecha_salida = new Date();
+        int p_fila = 0;
+        int p_columna = 0;
+        this.cliente = cliente;
+        this.fecha_entrada = fecha_entrada;
+        this.fecha_salida = fecha_salida;
+        this.parcelaFila = p_fila;
+        this.parcelaColumna = p_columna;
+        
+    }
         
     public String getNombre(){
         return cliente.getNombre();

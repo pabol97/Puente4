@@ -26,6 +26,7 @@ public class PagoAdmin extends javax.swing.JFrame {
     public PagoAdmin(Modelo modelo) {
         initComponents();
         this.modelo =  modelo;
+        reserva = new Reserva();
     }
 
     /**
