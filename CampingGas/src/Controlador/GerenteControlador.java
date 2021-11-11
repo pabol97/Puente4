@@ -29,6 +29,8 @@ public class GerenteControlador {
         actividades.add(act);
         actividades.add(act2);
         
+        
+        
         llenaDatosTest(parcelas);
     }
     
@@ -63,8 +65,8 @@ public class GerenteControlador {
 
         l.addReserva(r);
                 
-        for(int i = 0; i < parcelas.getFilas(); i++)              //PARA RELLENAR LA MITAD
-            for(int j = 0; j < parcelas.getColumnas(); j++)         // DE LA MITAD
+        for(int i = 0; i < parcelas.getFilas(); i++)              
+            for(int j = 0; j < parcelas.getColumnas(); j++)         
             {
                 if(Math.random() < 0.5 )
                 parcelas.setParcela(i, j, l);

@@ -19,7 +19,9 @@ import javax.swing.DefaultListModel;
 public class AlquilerAdminView extends javax.swing.JFrame {
 
     Parcelas parcelas;
-    Reserva[] reservas;
+    ListaReservas[][] listaReservaCamping;
+    Reserva[] reservasParcela;
+    
     String userCliente;
     Date fechaIni, fechaFin;
     int fila, columna, pos;
@@ -30,21 +32,21 @@ public class AlquilerAdminView extends javax.swing.JFrame {
      */
     public AlquilerAdminView(Parcelas parcelas) {
         initComponents();
-        
+        mensajeError.setVisible(false);
         rellenarListaReservas(parcelas);
     }
     
     public void rellenarListaReservas(Parcelas parcelas){
-        ListaReservas[][] listaReservaCamping = parcelas.getListaReservas();
-        Reserva[] reservasParcela;
+        listaReservaCamping = parcelas.getListaReservas();
         DefaultListModel modeloLista = new DefaultListModel();
         modeloLista.addElement("Nueva reserva.");
         for(int fila = 0; fila < parcelas.getFilas(); fila++){
             for(int columna = 0; columna < parcelas.getColumnas(); columna++){
-                reservasParcela = listaReservaCamping[fila][columna].getReservas();  //Me llevo las reservas de la parcela
-                for(int i = 0; i < reservasParcela.length; i++){ //Recorro la lista
-                    modeloLista.addElement(reservasParcela[i].toString() + ":" + i); //AÑADIMOS la posicion del vector donde lo hemos encontrado para que sea mas facil buscarlo luego
-                }
+                if (listaReservaCamping[fila][columna] != null)
+                    if((reservasParcela = listaReservaCamping[fila][columna].getReservas()) != null)  //Me llevo las reservas de la parcela
+                        for(int i = 0; i < reservasParcela.length; i++){ //Recorro la lista
+                            modeloLista.addElement(reservasParcela[i].toString() + ":" + i); //AÑADIMOS la posicion del vector donde lo hemos encontrado para que sea mas facil buscarlo luego
+                        }
             }
         }
         
@@ -219,6 +221,7 @@ public class AlquilerAdminView extends javax.swing.JFrame {
         String seleccion;
         String seleccionParcela;
         String[] partesSeleccion;
+        String[] partesFecha;
         seleccion = listaReservas.getSelectedValue();
         
             switch(seleccion){
@@ -235,15 +238,20 @@ public class AlquilerAdminView extends javax.swing.JFrame {
                     columna = Integer.parseInt(partesSeleccion[1]);
                     
                     Reserva nuevaReserva = new Reserva(cliente, fechaIni, fechaFin, fila, columna);
-                    
+                    if(!listaReservaCamping[fila][columna].addReserva(nuevaReserva))
+                        mensajeError.setVisible(true);
                     break;
                 default:
                     partesSeleccion = seleccion.split(":");
-
+                    
+                    
                     //Recogemos los datos de la reserva.
                     userCliente = partesSeleccion[0];
-                    fechaIni = new Date(partesSeleccion[1]);
-                    fechaFin = new Date(partesSeleccion[2]);
+                    partesFecha = partesSeleccion[1].split("/");
+                    fechaIni = new Date(Integer.parseInt(partesFecha[0]), Integer.parseInt(partesFecha[1]), Integer.parseInt(partesFecha[2]));
+                
+                    partesFecha = partesSeleccion[2].split("/");
+                    fechaFin = new Date(Integer.parseInt(partesFecha[0]), Integer.parseInt(partesFecha[1]), Integer.parseInt(partesFecha[2]));
                     fila = Integer.parseInt(partesSeleccion[3]);
                     columna = Integer.parseInt(partesSeleccion[4]);
                     pos = Integer.parseInt(partesSeleccion[5]);
@@ -259,7 +267,9 @@ public class AlquilerAdminView extends javax.swing.JFrame {
     private void listaReservasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaReservasValueChanged
         String seleccion;
         String[] partesSeleccion;
+        String[] partesFecha;
         seleccion = listaReservas.getSelectedValue();
+        
         
         
         switch(seleccion){
@@ -280,8 +290,13 @@ public class AlquilerAdminView extends javax.swing.JFrame {
                 
                 //Recogemos los datos de la reserva.
                 userCliente = partesSeleccion[0];
-                fechaIni = new Date(partesSeleccion[1]);
-                fechaFin = new Date(partesSeleccion[2]);
+                System.out.println(partesSeleccion[1]);
+                
+                partesFecha = partesSeleccion[1].split("/");
+                fechaIni = new Date(Integer.parseInt(partesFecha[0]), Integer.parseInt(partesFecha[1]), Integer.parseInt(partesFecha[2]));
+                
+                partesFecha = partesSeleccion[2].split("/");
+                fechaFin = new Date(Integer.parseInt(partesFecha[0]), Integer.parseInt(partesFecha[1]), Integer.parseInt(partesFecha[2]));
                 fila = Integer.parseInt(partesSeleccion[3]);
                 columna = Integer.parseInt(partesSeleccion[4]);
                 pos = Integer.parseInt(partesSeleccion[5]);
@@ -290,7 +305,6 @@ public class AlquilerAdminView extends javax.swing.JFrame {
                 fechaInicioChooser.setDate(fechaIni);
                 fechaFinChooser.setDate(fechaFin);
                 parcelaCombo.setSelectedItem(fila + ":" + columna);
-                
         }
     }//GEN-LAST:event_listaReservasValueChanged
 

@@ -162,8 +162,8 @@ public class MisReservasView extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        DisponibilidadCliente disponibilidadCliente = new DisponibilidadCliente();
-        disponibilidadCliente.setVisible(true);
+        //DisponibilidadCliente disponibilidadCliente = new DisponibilidadCliente();
+        //disponibilidadCliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

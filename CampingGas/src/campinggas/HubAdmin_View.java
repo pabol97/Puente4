@@ -5,6 +5,7 @@
  */
 package campinggas;
 
+import Controlador.GerenteControlador;
 import Modelo.Modelo;
 import Modelo.Parcelas;
 
@@ -15,12 +16,14 @@ import Modelo.Parcelas;
 public class HubAdmin_View extends javax.swing.JFrame {
 
     Modelo modelo = new Modelo();
-    Parcelas parcela = new Parcelas(10,10);
+    Parcelas parcela;
     /**
      * Creates new form Gerente
      */
-    public HubAdmin_View() {
+    public HubAdmin_View(GerenteControlador c, Modelo m) {
         initComponents();
+        parcela = c.getParcelas();
+        modelo = m;
     }
 
     /**

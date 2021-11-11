@@ -87,7 +87,8 @@ public class Reserva {
     
     
     public String toString(){
-        return getNombre() + ":" + getFechaEntrada() + ":" + getFechaSalida() + ":" + parcelaFila + ":" + parcelaColumna;
+        return getNombre() + ":" + getFechaEntrada().getYear() + "/" + getFechaEntrada().getMonth() + "/" + getFechaEntrada().getDay() + ":" + getFechaSalida().getYear() + "/" + 
+                getFechaSalida().getMonth() + "/" + getFechaSalida().getDay() + ":" + parcelaFila + ":" + parcelaColumna;
     }
     /*
     public String toString(){
