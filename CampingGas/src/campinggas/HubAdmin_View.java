@@ -15,7 +15,7 @@ import Modelo.Parcelas;
 public class HubAdmin_View extends javax.swing.JFrame {
 
     Modelo modelo = new Modelo();
-    Parcelas parcela = new Parcelas();
+    Parcelas parcela = new Parcelas(10,10);
     /**
      * Creates new form Gerente
      */

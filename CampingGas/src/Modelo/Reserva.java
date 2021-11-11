@@ -85,7 +85,13 @@ public class Reserva {
         return dias;
     }
     
+    
+    public String toString(){
+        return getNombre() + ":" + getFechaEntrada() + ":" + getFechaSalida() + ":" + parcelaFila + ":" + parcelaColumna;
+    }
+    /*
     public String toString(){
         return getNombre() + " tiene una reserva del dia " + getFechaEntrada() + " al dia " + getFechaSalida() + " por " + calcPrecio() + " bitcoins";
     }
+    */
 }

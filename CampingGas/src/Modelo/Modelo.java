@@ -11,6 +11,8 @@ import java.util.*;
  */
 public class Modelo {
     private ArrayList<Reserva> reservasCompletadas;
+    private Parcelas parcelasSinMap;
+    private ListaReservas listaReservasSinMap;
     private Map<Cliente,ArrayList<Parcelas>> reservas;
     private Map<Cliente,ArrayList<Actividad>> actividades;
     

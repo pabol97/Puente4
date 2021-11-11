@@ -5,9 +5,12 @@
  */
 package campinggas;
 
+import Modelo.Cliente;
 import Modelo.ListaReservas;
 import Modelo.Parcelas;
 import Modelo.Reserva;
+import java.util.Date;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -17,6 +20,10 @@ public class AlquilerAdminView extends javax.swing.JFrame {
 
     Parcelas parcelas;
     Reserva[] reservas;
+    String userCliente;
+    Date fechaIni, fechaFin;
+    int fila, columna, pos;
+    
     
     /**
      * Creates new form AlquilerAdminView
@@ -24,16 +31,26 @@ public class AlquilerAdminView extends javax.swing.JFrame {
     public AlquilerAdminView(Parcelas parcelas) {
         initComponents();
         
-        ListaReservas[][] listaReservas = parcelas.getListaReservas();
+        rellenarListaReservas(parcelas);
+    }
+    
+    public void rellenarListaReservas(Parcelas parcelas){
+        ListaReservas[][] listaReservaCamping = parcelas.getListaReservas();
         Reserva[] reservasParcela;
+        DefaultListModel modeloLista = new DefaultListModel();
+        modeloLista.addElement("Nueva reserva.");
         for(int fila = 0; fila < parcelas.getFilas(); fila++){
             for(int columna = 0; columna < parcelas.getColumnas(); columna++){
-                reservasParcela = listaReservas[fila][columna].getReservas();  //Me llevo las reservas de la parcela
+                reservasParcela = listaReservaCamping[fila][columna].getReservas();  //Me llevo las reservas de la parcela
                 for(int i = 0; i < reservasParcela.length; i++){ //Recorro la lista
-                    
+                    modeloLista.addElement(reservasParcela[i].toString() + ":" + i); //AÑADIMOS la posicion del vector donde lo hemos encontrado para que sea mas facil buscarlo luego
                 }
             }
         }
+        
+        listaReservas.setModel(modeloLista);
+        listaReservas.setSelectedIndex(0); //Ponemos como seleccion predeterminada la nueva reserva.
+        return;
     }
 
     /**
@@ -52,15 +69,14 @@ public class AlquilerAdminView extends javax.swing.JFrame {
         botonAlquilar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        fechaInicio = new com.toedter.calendar.JDateChooser();
-        fechaFin = new com.toedter.calendar.JDateChooser();
+        fechaInicioChooser = new com.toedter.calendar.JDateChooser();
+        fechaFinChooser = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        userClienteField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        parcelaCombo = new javax.swing.JComboBox<>();
+        mensajeError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +84,11 @@ public class AlquilerAdminView extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        listaReservas.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaReservasValueChanged(evt);
+            }
         });
         jScrollPane3.setViewportView(listaReservas);
 
@@ -100,21 +121,13 @@ public class AlquilerAdminView extends javax.swing.JFrame {
 
         jLabel4.setText("Parcelas disponibles:");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        jButton1.setText("Buscar Parcelas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Usuario Cliente:");
+
+        parcelaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1:1", "1:2", "1:3", "1:4", "1:5", "1:6", "1:7", "1:8", "1:9", "1:10", "2:1", "2:2", "2:3", "2:4", "2:5", "2:6", "2:7", "2:8", "2:9", "2:10", "3:1", "3:2", "3:3", "3:4", "3:5", "3:6", "3:7", "3:8", "3:9", "3:10", "4:1", "4:2", "4:3", "4:4", "4:5", "4:6", "4:7", "4:8", "4:9", "4:10", "5:1", "5:2", "5:3", "5:4", "5:5", "5:6", "5:7", "5:8", "5:9", "5:10", "6:1", "6:2", "6:3", "6:4", "6:5", "6:6", "6:7", "6:8", "6:9", "6:10", "7:1", "7:2", "7:3", "7:4", "7:5", "7:6", "7:7", "7:8", "7:9", "7:10", "8:1", "8:2", "8:3", "8:4", "8:5", "8:6", "8:7", "8:8", "8:9", "8:10", "9:1", "9:2", "9:3", "9:4", "9:5", "9:6", "9:7", "9:8", "10:9", "10:10", "10:1", "10:2", "10:3", "10:4", "10:5", "10:6", "10:7", "10:8", "10:9", "10:10" }));
+
+        mensajeError.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        mensajeError.setForeground(new java.awt.Color(255, 51, 51));
+        mensajeError.setText("ERROR: La parcela seleccionada no está disponible en ese rango de dias.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,33 +140,35 @@ public class AlquilerAdminView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(62, 62, 62)
-                                    .addComponent(botonAlquilar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(89, 89, 89)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel6))
+                                        .addGap(13, 13, 13)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(fechaInicioChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(fechaFinChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(parcelaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
-                                        .addComponent(jLabel6))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(userClienteField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(mensajeError, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(157, 157, 157)
+                                .addComponent(botonAlquilar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(jLabel1)))
-                .addGap(171, 171, 171))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,29 +183,29 @@ public class AlquilerAdminView extends javax.swing.JFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
                         .addComponent(jLabel3)
-                        .addGap(29, 29, 29)
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userClienteField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6)))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addGap(7, 7, 7)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(fechaInicioChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fechaFinChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(parcelaCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(mensajeError)
+                        .addGap(44, 44, 44)
                         .addComponent(botonAlquilar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(63, 63, 63))))
         );
 
         pack();
@@ -201,18 +216,88 @@ public class AlquilerAdminView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botonAlquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAlquilarActionPerformed
+        String seleccion;
+        String seleccionParcela;
+        String[] partesSeleccion;
+        seleccion = listaReservas.getSelectedValue();
         
+            switch(seleccion){
+                case "Nueva reserva.":
+                    userCliente = userClienteField.getText();
+                    Cliente cliente = new Cliente(userCliente);
+                    
+                    fechaIni = fechaInicioChooser.getDate();
+                    fechaFin = fechaFinChooser.getDate();
+                    
+                    seleccionParcela = (String) parcelaCombo.getSelectedItem();
+                    partesSeleccion = seleccionParcela.split(":");
+                    fila = Integer.parseInt(partesSeleccion[0]);
+                    columna = Integer.parseInt(partesSeleccion[1]);
+                    
+                    Reserva nuevaReserva = new Reserva(cliente, fechaIni, fechaFin, fila, columna);
+                    
+                    break;
+                default:
+                    partesSeleccion = seleccion.split(":");
+
+                    //Recogemos los datos de la reserva.
+                    userCliente = partesSeleccion[0];
+                    fechaIni = new Date(partesSeleccion[1]);
+                    fechaFin = new Date(partesSeleccion[2]);
+                    fila = Integer.parseInt(partesSeleccion[3]);
+                    columna = Integer.parseInt(partesSeleccion[4]);
+                    pos = Integer.parseInt(partesSeleccion[5]);
+
+                    userClienteField.setText(userCliente);
+                    fechaInicioChooser.setDate(fechaIni);
+                    fechaFinChooser.setDate(fechaFin);
+                    parcelaCombo.setSelectedItem(fila + ":" + columna);
+
+            }
     }//GEN-LAST:event_botonAlquilarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void listaReservasValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaReservasValueChanged
+        String seleccion;
+        String[] partesSeleccion;
+        seleccion = listaReservas.getSelectedValue();
+        
+        
+        switch(seleccion){
+            case "Nueva reserva.":
+                userCliente = "";
+                fechaIni = new Date();
+                fechaFin = new Date();
+                fila = -1;
+                columna = -1;
+                pos = -1;
+                
+                userClienteField.setText(userCliente);
+                fechaInicioChooser.setDate(fechaIni);
+                fechaFinChooser.setDate(fechaFin);
+                break;
+            default:
+                partesSeleccion = seleccion.split(":");
+                
+                //Recogemos los datos de la reserva.
+                userCliente = partesSeleccion[0];
+                fechaIni = new Date(partesSeleccion[1]);
+                fechaFin = new Date(partesSeleccion[2]);
+                fila = Integer.parseInt(partesSeleccion[3]);
+                columna = Integer.parseInt(partesSeleccion[4]);
+                pos = Integer.parseInt(partesSeleccion[5]);
+                
+                userClienteField.setText(userCliente);
+                fechaInicioChooser.setDate(fechaIni);
+                fechaFinChooser.setDate(fechaFin);
+                parcelaCombo.setSelectedItem(fila + ":" + columna);
+                
+        }
+    }//GEN-LAST:event_listaReservasValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlquilar;
-    private com.toedter.calendar.JDateChooser fechaFin;
-    private com.toedter.calendar.JDateChooser fechaInicio;
-    private javax.swing.JButton jButton1;
+    private com.toedter.calendar.JDateChooser fechaFinChooser;
+    private com.toedter.calendar.JDateChooser fechaInicioChooser;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -220,10 +305,10 @@ public class AlquilerAdminView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JList<String> listaReservas;
+    private javax.swing.JLabel mensajeError;
+    private javax.swing.JComboBox<String> parcelaCombo;
+    private javax.swing.JTextField userClienteField;
     // End of variables declaration//GEN-END:variables
 }

@@ -46,6 +46,11 @@ public class Parcelas {
          parcelas[fila][columna] = reservas;
     }
     
- 
+    public boolean addReserva(Reserva r,int fila, int columna){
+        boolean sePuede;
+        sePuede = parcelas[fila][columna].addReserva(r);
+        
+        return sePuede;
+    }
     
 }
