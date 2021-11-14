@@ -1,79 +1,83 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador;
 
-import Modelo.Actividad;
-import Modelo.Cliente;
-import Modelo.ListaReservas;
-import Modelo.Parcelas;
-import Modelo.Reserva;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-
+import Modelo.Modelo;
+import campinggas.HubAdmin_View;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
- * @author alumno
+ * @author Raúl
+ */
+
+/**
+ * MaestroDeLosColoresViewJ1 vista1;
+    MaestroDeLosColoresViewJ2 vista2;
+    
+    MaestroDeLosColoresModel modelo;
+    AcercaDeView acerca_de;
+    FinPartidaView fin;
+    MDLCActionListener aL = new MDLCActionListener();
+    
+    public MaestroDeLosColoresController(MaestroDeLosColoresViewJ1 v1, MaestroDeLosColoresViewJ2 v2, MaestroDeLosColoresModel m)
+    {
+        vista1 = v1;
+        vista2 = v2;
+        modelo = m;
+        
+        
+        
+        vista1.setActionListener(aL);
+        vista2.setActionListener(aL);
+        
+    }
+    * 
+    * class MDLCActionListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent ae){
+            String command = ae.getActionCommand();
+            int[] j1, j2, solucion;
+            int intentos;
+            boolean terminado = false;
+            ...
+ * @author Raúl
  */
 public class GerenteControlador {
-    ArrayList<Actividad> actividades = new ArrayList<Actividad>();
-    Parcelas parcelas = new Parcelas(10,10);
+    HubAdmin_View vista;
+    Modelo modelo;
     
-    public GerenteControlador(){
-        Actividad act = new Actividad("Judo",null);
-        Actividad act2 = new Actividad("Bolos",null);
-        actividades.add(act);
-        actividades.add(act2);
+    miActionListener aL = new miActionListener();
+    miChangeListener cL = new miChangeListener();
+    
+    public GerenteControlador(HubAdmin_View v, Modelo m){
+        vista = v;
+        modelo = m;
         
-        
-        
-        llenaDatosTest(parcelas);
+        vista.setMiActionListener(aL);
     }
-    
-    public ArrayList<Actividad> getActividades(){
-        return actividades;
-    }
-    
-    public void crearActividad(String titulo, Calendar fecha){
-        Actividad act = new Actividad(titulo,fecha);
-        actividades.add(act);
-    }
-    
-    public Parcelas getParcelas()
-    {
-        return parcelas;
-    }
-    
-    public void llenaDatosTest(Parcelas parcelas){
-        
-        
-        
-        Date c = new Date(2021,11,5);
-        Date c2 = new Date(2021,11,15);
 
-        
-        Cliente cli = new Cliente("Test");
-        
-        
-        Reserva r = new Reserva(cli,c,c2,1,1);
-        Reserva[] rs = new Reserva[1];
-        rs[0] = r;
-        ListaReservas l = new ListaReservas(rs);
+    class miActionListener implements ActionListener{
 
-        l.addReserva(r);
-                
-        for(int i = 0; i < parcelas.getFilas(); i++)              
-            for(int j = 0; j < parcelas.getColumnas(); j++)         
-            {
-                
-                if(Math.random() < 0.5 )
-                parcelas.setReservaAParcela(i, j, l);
-                //parcelas.establecerCoherencia();
-            }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String command = e.getActionCommand();
+            
+            //SWITCH TOCHO
+        }
+    }
     
-}
+    class miChangeListener implements ChangeListener{
+
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            String elegido = e.getSource().toString(); //Creo que es así, habria que mirarlo
+        }
+        
+    }
 }

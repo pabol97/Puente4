@@ -4,7 +4,7 @@
  */
 package campinggas;
 
-import Controlador.GerenteControlador;
+import Controlador.GerenteControlador_Anterior;
 import Modelo.Modelo;
 
 /**
@@ -24,12 +24,12 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
         String usuario;
         String contrasenya;
         
-        GerenteControlador controller;
+        GerenteControlador_Anterior controller;
         Modelo m;
     
     public VentanaPrincipalView() {
         initComponents();
-        controller = new GerenteControlador();
+        controller = new GerenteControlador_Anterior();
         m = new Modelo(); 
         setVisible(true);
     }
@@ -165,7 +165,7 @@ public class VentanaPrincipalView extends javax.swing.JFrame {
         if( (usuario.equals(usuarioAdminPredef)) )
             if(contrasenya.equals(contraseñaAdminPredef))
             {
-                HubAdmin_View ventanRaul = new HubAdmin_View(controller, m);
+                HubAdmin_View ventanRaul = new HubAdmin_View();
                 ventanRaul.setVisible(true);
                 this.dispose();
             }

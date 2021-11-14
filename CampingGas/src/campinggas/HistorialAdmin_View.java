@@ -6,6 +6,7 @@
 package campinggas;
 
 import Modelo.*;
+import java.awt.event.ActionListener;
 import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -123,4 +124,8 @@ public class HistorialAdmin_View extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    void setMiActionListener(ActionListener aL) {
+        
+    }
 }

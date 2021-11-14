@@ -5,7 +5,7 @@
  */
 package campinggas;
 
-import Controlador.GerenteControlador;
+import Controlador.GerenteControlador_Anterior;
 import Modelo.ListaReservas;
 import Modelo.Parcelas;
 import Modelo.Reserva;
@@ -32,7 +32,7 @@ public class DisponibilidadCliente extends javax.swing.JFrame {
     Parcelas parcelas;
     //comprobar disponibles y enseñar por pantalla
     
-    public DisponibilidadCliente(GerenteControlador controller) {
+    public DisponibilidadCliente(GerenteControlador_Anterior controller) {
         /*this.reserva = new ListaReservas[parcelas.getFilas()][parcelas.getColumnas()];
         */
         

@@ -5,7 +5,7 @@
  */
 package campinggas;
 
-import Controlador.GerenteControlador;
+import Controlador.GerenteControlador_Anterior;
 import Modelo.Actividad;
 import Modelo.Cliente;
 import campinggas.emparejamientosView;
@@ -25,7 +25,7 @@ public class VisualizarActividadesAdmin extends javax.swing.JFrame {
     String[] listado_aux = new String[10];
     String[] clientes_aux = new String[10];
     
-    public VisualizarActividadesAdmin(GerenteControlador gerente) {
+    public VisualizarActividadesAdmin(GerenteControlador_Anterior gerente) {
         initComponents();
         
         listadoActividades = gerente.getActividades();

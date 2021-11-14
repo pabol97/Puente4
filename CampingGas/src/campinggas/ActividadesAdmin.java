@@ -5,8 +5,9 @@
  */
 package campinggas;
 
-import Controlador.GerenteControlador;
+import Controlador.GerenteControlador_Anterior;
 import campinggas.HubAdmin_View;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -14,7 +15,7 @@ import campinggas.HubAdmin_View;
  */
 public class ActividadesAdmin extends javax.swing.JFrame {
     
-    GerenteControlador gerente = new GerenteControlador();
+    GerenteControlador_Anterior gerente = new GerenteControlador_Anterior();
     /**
      * Creates new form ActividadesAdmin
      */
@@ -121,4 +122,8 @@ public class ActividadesAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    void setMiActionListener(ActionListener aL) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

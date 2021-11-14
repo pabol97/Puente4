@@ -5,9 +5,10 @@
  */
 package campinggas;
 
-import Controlador.GerenteControlador;
+import Controlador.GerenteControlador_Anterior;
 import Modelo.Modelo;
 import Modelo.Parcelas;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -15,15 +16,15 @@ import Modelo.Parcelas;
  */
 public class HubAdmin_View extends javax.swing.JFrame {
 
-    Modelo modelo = new Modelo();
-    Parcelas parcela;
+    AlquilerAdminView alquilerAdmin;
+    HistorialAdmin_View historial;
+    PagoAdmin pago;
+    ActividadesAdmin act;
     /**
      * Creates new form Gerente
      */
-    public HubAdmin_View(GerenteControlador c, Modelo m) {
+    public HubAdmin_View() {
         initComponents();
-        parcela = c.getParcelas();
-        modelo = m;
     }
 
     /**
@@ -133,22 +134,30 @@ public class HubAdmin_View extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AlquilerAdminView alquilerAdmin = new AlquilerAdminView(parcela);
+        
+        alquilerAdmin = new AlquilerAdminView();
         alquilerAdmin.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        HistorialAdmin_View historial = new HistorialAdmin_View(modelo);
+        //Aquí no se como hacer que haga cosas en el modelo con el MVC
+        //EL MODELO SOLO LO PUEDE MODIFICAR EL CONTROLADOR. En teoria.
+        //historial = new HistorialAdmin_View(modelo);
+        historial = new HistorialAdmin_View();
         historial.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        PagoAdmin pago =  new PagoAdmin(modelo);
+        //Aquí no se como hacer que haga cosas en el modelo con el MVC
+        //EL MODELO SOLO LO PUEDE MODIFICAR EL CONTROLADOR. En teoria.
+        //Añadir un actionListener del controlador aqui??
+        //pago =  new PagoAdmin(modelo);
+        pago =  new PagoAdmin();
         pago.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ActividadesAdmin act = new ActividadesAdmin();
+        act = new ActividadesAdmin();
         act.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -159,4 +168,11 @@ public class HubAdmin_View extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     // End of variables declaration//GEN-END:variables
+
+    public void setMiActionListener(ActionListener aL) {
+        alquilerAdmin.setMiActionListener(aL);
+        historial.setMiActionListener(aL);
+        pago.setMiActionListener(aL);
+        act.setMiActionListener(aL);
+    }
 }

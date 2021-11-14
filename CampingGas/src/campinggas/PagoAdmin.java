@@ -6,6 +6,7 @@
 package campinggas;
 
 import Modelo.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -258,4 +259,8 @@ public class PagoAdmin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    void setMiActionListener(ActionListener aL) {
+        //AQUÍ VAN LOS BOTONES QUE DEBEN CONECTARSE AL CONTROLADOR
+    }
 }

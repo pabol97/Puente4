@@ -5,7 +5,7 @@
  */
 package campinggas;
 
-import Controlador.GerenteControlador;
+import Controlador.GerenteControlador_Anterior;
 import campinggas.ActividadesAdmin;
 
 /**
@@ -17,9 +17,9 @@ public class CrearActividadAdmin extends javax.swing.JFrame {
     /**
      * Creates new form CrearActividadAdmin
      */
-    GerenteControlador gerente;
+    GerenteControlador_Anterior gerente;
     
-    public CrearActividadAdmin(GerenteControlador _gerente) {
+    public CrearActividadAdmin(GerenteControlador_Anterior _gerente) {
         gerente = _gerente;
         initComponents();
     }

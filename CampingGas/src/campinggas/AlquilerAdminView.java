@@ -5,10 +5,12 @@
  */
 package campinggas;
 
+import Controlador.GerenteControlador_Anterior;
 import Modelo.Cliente;
 import Modelo.ListaReservas;
 import Modelo.Parcelas;
 import Modelo.Reserva;
+import java.awt.event.ActionListener;
 import java.util.Date;
 import javax.swing.DefaultListModel;
 
@@ -30,8 +32,9 @@ public class AlquilerAdminView extends javax.swing.JFrame {
     /**
      * Creates new form AlquilerAdminView
      */
-    public AlquilerAdminView(Parcelas parcelas) {
+    public AlquilerAdminView(GerenteControlador_Anterior c) {
         initComponents();
+        parcelas = c.getParcelas();
         mensajeError.setVisible(false);
         rellenarListaReservas(parcelas);
     }
@@ -333,4 +336,8 @@ public class AlquilerAdminView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> parcelaCombo;
     private javax.swing.JTextField userClienteField;
     // End of variables declaration//GEN-END:variables
+
+    void setMiActionListener(ActionListener aL) {
+        botonAlquilar.addActionListener(aL);
+    }
 }
