@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 public class HubAdmin_View extends javax.swing.JFrame {
 
     AlquilerAdminView alquilerAdmin;
-    HistorialAdmin_View historial;
+    HistorialAdminView historial;
     PagoAdmin pago;
     ActividadesAdmin act;
     /**
@@ -36,47 +36,47 @@ public class HubAdmin_View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        botonAlquilar = new javax.swing.JButton();
+        botonGestionarAct = new javax.swing.JButton();
+        botonPago = new javax.swing.JButton();
+        botonHistorial = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton1.setText("Alquilar");
-        jButton1.setActionCommand("modReservaButton");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonAlquilar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        botonAlquilar.setText("Alquilar");
+        botonAlquilar.setActionCommand("botonAlquilar");
+        botonAlquilar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonAlquilarActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton2.setText("Gestionar Actividades");
-        jButton2.setActionCommand("gestActividadesButton");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonGestionarAct.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        botonGestionarAct.setText("Gestionar Actividades");
+        botonGestionarAct.setActionCommand("gestActividadesButton");
+        botonGestionarAct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonGestionarActActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton3.setText("Pago");
-        jButton3.setActionCommand("pagoButton");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonPago.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        botonPago.setText("Pago");
+        botonPago.setActionCommand("botonPago");
+        botonPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonPagoActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton4.setText("Historial");
-        jButton4.setActionCommand("historialButton");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonHistorial.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        botonHistorial.setText("Historial");
+        botonHistorial.setActionCommand("botonHistorial");
+        botonHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonHistorialActionPerformed(evt);
             }
         });
 
@@ -98,11 +98,11 @@ public class HubAdmin_View extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonHistorial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonAlquilar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)))
+                                .addComponent(botonPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonGestionarAct, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)))
                         .addGap(144, 144, 144))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,13 +112,13 @@ public class HubAdmin_View extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(71, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonAlquilar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonPago, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonGestionarAct, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -133,46 +133,50 @@ public class HubAdmin_View extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonAlquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAlquilarActionPerformed
         
         alquilerAdmin = new AlquilerAdminView();
         alquilerAdmin.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonAlquilarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void botonHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonHistorialActionPerformed
         //Aquí no se como hacer que haga cosas en el modelo con el MVC
         //EL MODELO SOLO LO PUEDE MODIFICAR EL CONTROLADOR. En teoria.
-        //historial = new HistorialAdmin_View(modelo);
-        historial = new HistorialAdmin_View();
+        //historial = new HistorialAdminView(modelo);
+        historial = new HistorialAdminView();
         historial.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_botonHistorialActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPagoActionPerformed
         //Aquí no se como hacer que haga cosas en el modelo con el MVC
         //EL MODELO SOLO LO PUEDE MODIFICAR EL CONTROLADOR. En teoria.
         //Añadir un actionListener del controlador aqui??
         //pago =  new PagoAdmin(modelo);
         pago =  new PagoAdmin();
         pago.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonPagoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonGestionarActActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestionarActActionPerformed
         act = new ActividadesAdmin();
         act.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonGestionarActActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton botonAlquilar;
+    private javax.swing.JButton botonGestionarAct;
+    private javax.swing.JButton botonHistorial;
+    private javax.swing.JButton botonPago;
     private javax.swing.JButton jButton5;
     // End of variables declaration//GEN-END:variables
 
     public void setMiActionListener(ActionListener aL) {
-        alquilerAdmin.setMiActionListener(aL);
-        historial.setMiActionListener(aL);
-        pago.setMiActionListener(aL);
-        act.setMiActionListener(aL);
+        //ES EL CONTROLADOR EL QUE ABRE LAS VENTANAS, YA QUE ALGUNAS SE TIENEN QUE PASAR CON PARÁMETROS DEL MODELO Y TAL
+        //ASÍ QUE SOLAMENTE LE AGREGAMOS EL ACTION LISTENER Y YA
+        
+        botonAlquilar.addActionListener(aL);
+        botonGestionarAct.addActionListener(aL);
+        botonHistorial.addActionListener(aL);
+        botonPago.addActionListener(aL);
+        
     }
 }

@@ -15,13 +15,13 @@ import javax.swing.JList;
  *
  * @author alumno
  */
-public class HistorialAdmin_View extends javax.swing.JFrame {
+public class HistorialAdminView extends javax.swing.JFrame {
     DefaultListModel reservasList;
     Modelo modelo;
     /**
      * Creates new form HistorialAdmin_View
      */
-    public HistorialAdmin_View(Modelo modelo) {
+    public HistorialAdminView(Modelo modelo) {
         initComponents();
         this.modelo = modelo;
         reservasList.addAll(0, modelo.getReservasCompletadas());
@@ -107,13 +107,13 @@ public class HistorialAdmin_View extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HistorialAdmin_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistorialAdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HistorialAdmin_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistorialAdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HistorialAdmin_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistorialAdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HistorialAdmin_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistorialAdminView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         */

@@ -5,6 +5,7 @@
 package Controlador;
 
 import Modelo.Modelo;
+import campinggas.AlquilerAdminView;
 import campinggas.HubAdmin_View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -76,7 +77,16 @@ public class GerenteControlador {
 
         @Override
         public void stateChanged(ChangeEvent e) {
-            String elegido = e.getSource().toString(); //Creo que es así, habria que mirarlo
+            String evento = e.getSource().toString(); //Creo que es así, habria que mirarlo
+            
+            //SWITCH o lo que sea.
+            switch(evento){
+                case "botonAlquilar":
+                    AlquilerAdminView ventanaAlqulerAdminView = new AlquilerAdminView(modelo.getParcelas());
+                    break;
+                default:
+                    break;
+            }
         }
         
     }

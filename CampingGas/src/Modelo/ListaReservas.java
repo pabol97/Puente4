@@ -4,77 +4,66 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Raúl
  */
 public class ListaReservas {
-    Reserva[] reservas;
+    ArrayList<Reserva> reservas;
 
-    public ListaReservas(Reserva[] r){
+    public ListaReservas(ArrayList<Reserva> r){
         reservas = r;
     }
 
     public boolean addReserva(Reserva r){
         boolean sePuede = true;
-        boolean a = true;
-        boolean hayHuecos = false;
-        int r_fila, r_columna, numReservas, hueco = 0;
+        int r_fila, r_columna, numReservas;
 
-        int primerNull; //para poder ir rellenando los huecos
         r_fila = r.getFila();
         r_columna = r.getColumna();
         
-        numReservas = reservas.length; //Me llevo el numero de reservas que tengo guardado
+        numReservas = reservas.size(); //Me llevo el numero de reservas que tengo guardado
 
         
         for(int i = 0; i < numReservas; i++){
             if(sePuede){
-                if(!hayHuecos && reservas[i] == null){
-                    hayHuecos = true;
-                    System.out.println("a");
-                    hueco = i; 
+                
+                //Si mi entrada está entre medias de una reserva = FALSE
+                if(r.getFechaEntrada().compareTo(reservas.get(i).getFechaEntrada()) > 0 && r.getFechaEntrada().compareTo(reservas.get(i).getFechaSalida()) < 0) {
+                    sePuede = false;
                 }
-                else{
-                    //Si mi entrada está entre medias de una reserva = FALSE
-                    if(r.getFechaEntrada().compareTo(reservas[i].getFechaEntrada()) > 0 && r.getFechaEntrada().compareTo(reservas[i].getFechaSalida()) < 0) {
-                        sePuede = false;
-                    }
-                    //Si mi salida está entre medias de una reserva = FALSE
-                    else if(r.getFechaSalida().compareTo(reservas[i].getFechaEntrada()) < 0 && r.getFechaSalida().compareTo(reservas[i].getFechaSalida()) > 0)
-                        sePuede = false;
-                    //SI mi tengo entre medias de mi entrada y salida una reserva, FALSE.
-                    else if(r.getFechaEntrada().compareTo(reservas[i].getFechaEntrada()) < 0 && r.getFechaSalida().compareTo(reservas[i].getFechaSalida()) > 0)
-                        sePuede = false;
-                }
+                //Si mi salida está entre medias de una reserva = FALSE
+                else if(r.getFechaSalida().compareTo(reservas.get(i).getFechaEntrada()) < 0 && r.getFechaSalida().compareTo(reservas.get(i).getFechaSalida()) > 0)
+                    sePuede = false;
+                //SI mi tengo entre medias de mi entrada y salida una reserva, FALSE.
+                else if(r.getFechaEntrada().compareTo(reservas.get(i).getFechaEntrada()) < 0 && r.getFechaSalida().compareTo(reservas.get(i).getFechaSalida()) > 0)
+                    sePuede = false;
             }
         }
         if (sePuede){
-            if(hayHuecos){
-                reservas[hueco] = r;
-            }
-            else
-                reservas[numReservas - 1] = r;
+            reservas.add(r);
         }
         return sePuede;
     }
 
-    public Reserva[] getReservas() {
+    public ArrayList<Reserva> getReservas() {
         return reservas;
     }
     
     public int numeroReservas(){
-        return reservas.length;
+        return reservas.size();
     }
     
     public Reserva getReserva(int i){
-        return reservas[i];
+        return reservas.get(i);
     }
 
     void setFilasYColumnasEnReservas(int filas, int columnas) {
         for(int i = 0; i < numeroReservas(); i++){
-            reservas[i].setFila(filas);
-            reservas[i].setColumna(columnas);
+            reservas.get(i).setFila(filas);
+            reservas.get(i).setColumna(columnas);
         }
     }
 }

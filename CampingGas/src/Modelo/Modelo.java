@@ -11,8 +11,8 @@ import java.util.*;
  */
 public class Modelo {
     private ArrayList<Reserva> reservasCompletadas;
-    private Parcelas parcelasSinMap;
-    private ListaReservas listaReservasSinMap;
+    private Parcelas parcelas;
+    private ListaReservas listaReservas;
     private Map<Cliente,ArrayList<Parcelas>> reservas;
     private Map<Cliente,ArrayList<Actividad>> actividades;
     
@@ -34,5 +34,9 @@ public class Modelo {
     
     public ArrayList<Actividad> cargarActividades(Cliente cliente){
         return actividades.get(cliente);
+    }
+
+    public Parcelas getParcelas() {
+        return parcelas;
     }
 }

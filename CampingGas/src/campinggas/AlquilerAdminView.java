@@ -11,6 +11,7 @@ import Modelo.ListaReservas;
 import Modelo.Parcelas;
 import Modelo.Reserva;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultListModel;
 
@@ -22,7 +23,7 @@ public class AlquilerAdminView extends javax.swing.JFrame {
 
     Parcelas parcelas;
     ListaReservas[][] listaReservaCamping;
-    Reserva[] reservasParcela;
+    ArrayList<Reserva> reservasParcela;
     
     String userCliente;
     Date fechaIni, fechaFin;
@@ -32,9 +33,9 @@ public class AlquilerAdminView extends javax.swing.JFrame {
     /**
      * Creates new form AlquilerAdminView
      */
-    public AlquilerAdminView(GerenteControlador_Anterior c) {
+    public AlquilerAdminView(Parcelas parcelas) { //ESTA VENTANA LA TIENE QUE CREAR EL CONTROLADOR PORQUE LE TIENE QUE PASAR LAS PARCELAS DEL MODELO
         initComponents();
-        parcelas = c.getParcelas();
+        this.parcelas = parcelas; 
         mensajeError.setVisible(false);
         rellenarListaReservas(parcelas);
     }
@@ -47,8 +48,8 @@ public class AlquilerAdminView extends javax.swing.JFrame {
             for(int columna = 0; columna < parcelas.getColumnas(); columna++){
                 if (listaReservaCamping[fila][columna] != null)
                     if((reservasParcela = listaReservaCamping[fila][columna].getReservas()) != null)  //Me llevo las reservas de la parcela
-                        for(int i = 0; i < reservasParcela.length; i++){ //Recorro la lista
-                            modeloLista.addElement(reservasParcela[i].toString() + ":" + i); //AÑADIMOS la posicion del vector donde lo hemos encontrado para que sea mas facil buscarlo luego
+                        for(int i = 0; i < reservasParcela.size(); i++){ //Recorro la lista
+                            modeloLista.addElement(reservasParcela.get(i).toString() + ":" + i); //AÑADIMOS la posicion del vector donde lo hemos encontrado para que sea mas facil buscarlo luego
                         }
             }
         }
