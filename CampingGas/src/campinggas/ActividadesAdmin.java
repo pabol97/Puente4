@@ -44,15 +44,11 @@ public class ActividadesAdmin extends javax.swing.JFrame {
 
         crearActividad.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         crearActividad.setText("CREAR");
-        crearActividad.setActionCommand("crearActividad1");
-        crearActividad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearActividadActionPerformed(evt);
-            }
-        });
+        crearActividad.setActionCommand("crearVentanaActividad");
 
         volver.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         volver.setText("Volver");
+        volver.setActionCommand("VolverActividadesAdmin");
         volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 volverActionPerformed(evt);
@@ -62,11 +58,6 @@ public class ActividadesAdmin extends javax.swing.JFrame {
         visualizarActividades.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         visualizarActividades.setText("VISUALIZAR");
         visualizarActividades.setActionCommand("visualizarActividad");
-        visualizarActividades.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visualizarActividadesActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,19 +95,8 @@ public class ActividadesAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
-
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
-
-    private void crearActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActividadActionPerformed
-        CrearActividadAdmin nuevaActividad = new CrearActividadAdmin();
-        nuevaActividad.setVisible(true);
-    }//GEN-LAST:event_crearActividadActionPerformed
-
-    private void visualizarActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarActividadesActionPerformed
-        VisualizarActividadesAdmin visualizarActividades = new VisualizarActividadesAdmin(gerente);
-        visualizarActividades.setVisible(true);
-    }//GEN-LAST:event_visualizarActividadesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton crearActividad;

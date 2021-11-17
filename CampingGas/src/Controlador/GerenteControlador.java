@@ -9,7 +9,9 @@ import Modelo.Reserva;
 import campinggas.ActividadesAdmin;
 import campinggas.AlquilerAdminView;
 import campinggas.CrearActividadAdmin;
+import campinggas.EmparejamientosView;
 import campinggas.HubAdmin_View;
+import campinggas.VisualizarActividadesAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.event.ChangeEvent;
@@ -53,13 +55,17 @@ import javax.swing.event.ChangeListener;
  * @author Raúl
  */
 public class GerenteControlador {
-    HubAdmin_View vista;
     Modelo modelo;
     
     miActionListener aL = new miActionListener();
     miChangeListener cL = new miChangeListener();
     
+    HubAdmin_View vista;
     AlquilerAdminView ventanaAlquilerAdminView;
+    ActividadesAdmin actividadesAdmin;
+    CrearActividadAdmin crearActividadAdmin;
+    VisualizarActividadesAdmin visualizarActividadesAdmin;
+    EmparejamientosView emparejamientosView;
     
     public GerenteControlador(HubAdmin_View v, Modelo m){
         vista = v;
@@ -102,20 +108,21 @@ public class GerenteControlador {
                         }
                     }
                     break;
-                case "crearActividad1":
+                case "crearVentanaActividad":
                     CrearActividadAdmin nuevaActividad = new CrearActividadAdmin();
                     nuevaActividad.setVisible(true);
                     break;
                 case "visualizarActividad":
-                    //VisualizarActividadesAdmin visualizarActividades = new VisualizarActividadesAdmin(gerente);
-                    //visualizarActividades.setVisible(true);
+                    visualizarActividadesAdmin = new VisualizarActividadesAdmin(modelo.getActividades());
+                    visualizarActividadesAdmin.setVisible(true);
                     break;
-                case "volver":
-                    //this.dispose();
+                case "VolverActividadesAdmin":
+                    actividadesAdmin.setVisible(false);
+                    actividadesAdmin.dispose();
                     break;
                 case "gestActividadesButton":
-                    ActividadesAdmin act = new ActividadesAdmin();
-                    act.setVisible(true);
+                    actividadesAdmin = new ActividadesAdmin();
+                    actividadesAdmin.setVisible(true);
                     break;
                 case "crearActividad":
                     

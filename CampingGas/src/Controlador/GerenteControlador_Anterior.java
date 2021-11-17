@@ -62,7 +62,8 @@ public class GerenteControlador_Anterior {
         Reserva r = new Reserva(cli,c,c2,1,1);
         Reserva[] rs = new Reserva[1];
         rs[0] = r;
-        ListaReservas l = new ListaReservas(rs);
+        ArrayList<Reserva> caca = new ArrayList<Reserva>();
+        ListaReservas l = new ListaReservas(caca);
 
         l.addReserva(r);
                 

@@ -56,11 +56,6 @@ public class HubAdmin_View extends javax.swing.JFrame {
         botonGestionarAct.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         botonGestionarAct.setText("Gestionar Actividades");
         botonGestionarAct.setActionCommand("gestActividadesButton");
-        botonGestionarAct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonGestionarActActionPerformed(evt);
-            }
-        });
 
         botonPago.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         botonPago.setText("Pago");
@@ -155,12 +150,6 @@ public class HubAdmin_View extends javax.swing.JFrame {
         //pago =  new PagoAdmin();
         pago.setVisible(true);
     }//GEN-LAST:event_botonPagoActionPerformed
-
-    private void botonGestionarActActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestionarActActionPerformed
-        act = new ActividadesAdmin();
-        act.setVisible(true);
-    }//GEN-LAST:event_botonGestionarActActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAlquilar;
     private javax.swing.JButton botonGestionarAct;

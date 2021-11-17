@@ -5,11 +5,8 @@
  */
 package campinggas;
 
-import Controlador.GerenteControlador_Anterior;
 import Modelo.Actividad;
 import Modelo.Cliente;
-import campinggas.EmparejamientosView;
-import java.awt.PopupMenu;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -26,13 +23,10 @@ public class VisualizarActividadesAdmin extends javax.swing.JFrame {
     String[] listado_aux = new String[10];
     String[] clientes_aux = new String[10];
     
-    public VisualizarActividadesAdmin(GerenteControlador_Anterior gerente) {
+    public VisualizarActividadesAdmin(ArrayList<Actividad> lista_auxiliar) {
         initComponents();
         
-        listadoActividades = gerente.getActividades();
-        
-        System.out.println(listadoActividades.size());
-
+        listadoActividades = lista_auxiliar;
         
         for (int i = 0; i < listadoActividades.size(); i++){
             listado_aux[i] = listadoActividades.get(i).getTitulo();
@@ -176,7 +170,12 @@ public class VisualizarActividadesAdmin extends javax.swing.JFrame {
 
     private void botonVerParejasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerParejasActionPerformed
         Actividad actividad = listadoActividades.get(listaActividades.getSelectedIndex());
-        ArrayList<String> parejas = actividad.emparejar();
+        ArrayList<String> parejas_aux = actividad.emparejar();
+        String[] parejas = new String[]{};
+        
+        for (int i = 0; i < parejas_aux.size();i++)
+            parejas[i] = parejas_aux.get(i);
+        
         EmparejamientosView emparejamiento = new EmparejamientosView(parejas);
         emparejamiento.setVisible(true);
     }//GEN-LAST:event_botonVerParejasActionPerformed
@@ -222,5 +221,4 @@ void setMiActionListener(ActionListener aL) {
         botonVerParejas.addActionListener(aL);    
         botonVolver.addActionListener(aL);
     }
-
 }
