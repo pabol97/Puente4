@@ -17,7 +17,7 @@ public class ListaReservas {
         reservas = r;
     }
 
-    public boolean addReserva(Reserva r){
+    public boolean compruebaReserva(Reserva r){
         boolean sePuede = true;
         int r_fila, r_columna, numReservas;
 
@@ -42,9 +42,16 @@ public class ListaReservas {
                     sePuede = false;
             }
         }
+        return sePuede;
+    }
+    
+    public boolean addReserva(Reserva nuevaReserva){
+        boolean sePuede;
+        sePuede = compruebaReserva(nuevaReserva); //Compruebas si la reserva está en fechas válidas
         if (sePuede){
-            reservas.add(r);
+            reservas.add(nuevaReserva);
         }
+        
         return sePuede;
     }
 
@@ -65,5 +72,25 @@ public class ListaReservas {
             reservas.get(i).setFila(filas);
             reservas.get(i).setColumna(columnas);
         }
+    }
+    
+    boolean modificaReserva(Reserva reservaMod) {
+        Reserva reservaAux;
+        int posicion;
+        boolean sePuede;
+        
+        posicion = reservaMod.getPosicionAModificar();
+        reservaAux = reservas.get(posicion);
+        
+        reservas.remove(reservaAux);
+        
+        if(!addReserva(reservaMod)){
+            reservas.add(reservaAux); //Si no se ha podido modificar, volvemos a meter la reserva eliminada en el vector.
+            sePuede = false;
+        }
+        else
+            sePuede = true;
+
+        return sePuede;
     }
 }

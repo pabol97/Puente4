@@ -39,4 +39,13 @@ public class Modelo {
     public Parcelas getParcelas() {
         return parcelas;
     }
+    
+    public boolean addNuevaReserva(Reserva nuevaReserva) {
+        return parcelas.addNuevaReserva(nuevaReserva);
+    }
+
+    public boolean modificaReserva(Reserva reserva) {
+        return parcelas.modificaReserva(reserva);
+    }
+    
 }

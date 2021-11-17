@@ -5,6 +5,7 @@
 package Controlador;
 
 import Modelo.Modelo;
+import Modelo.Reserva;
 import campinggas.AlquilerAdminView;
 import campinggas.HubAdmin_View;
 import java.awt.event.ActionEvent;
@@ -56,6 +57,8 @@ public class GerenteControlador {
     miActionListener aL = new miActionListener();
     miChangeListener cL = new miChangeListener();
     
+    AlquilerAdminView ventanaAlquilerAdminView;
+    
     public GerenteControlador(HubAdmin_View v, Modelo m){
         vista = v;
         modelo = m;
@@ -70,6 +73,36 @@ public class GerenteControlador {
             String command = e.getActionCommand();
             
             //SWITCH TOCHO
+            switch(command){
+                case "botonAlquilarAdminView":
+                    ventanaAlquilerAdminView = new AlquilerAdminView(modelo.getParcelas());
+                    ventanaAlquilerAdminView.setVisible(true);
+                    ventanaAlquilerAdminView.setMiActionListener(aL);
+                    break;
+                case "AlquilarParcelaAdmin":
+                    Reserva nuevaReserva;
+                    boolean nueva = true;
+                    nuevaReserva = ventanaAlquilerAdminView.getReserva(nueva); //Le pasamos por referencia el booleano.
+                    
+                    if(nueva){ //Si la reserva es nueva
+                        if(!modelo.addNuevaReserva(nuevaReserva)) //Si es inválida muestra error
+                            ventanaAlquilerAdminView.mostrarError();
+                        else
+                        {
+                            ventanaAlquilerAdminView.actualizarLista(modelo.getParcelas()); //Si es válida, modelo modificado y hay que actualizar la lista
+                        }
+                    }
+                    else{
+                        if(!modelo.modificaReserva(nuevaReserva)) //Si no puede modificar la reserva correctamente:
+                            ventanaAlquilerAdminView.mostrarError();
+                        else{
+                            ventanaAlquilerAdminView.actualizarLista(modelo.getParcelas());
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
     

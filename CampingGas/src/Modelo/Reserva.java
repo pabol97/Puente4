@@ -16,6 +16,8 @@ public class Reserva {
     private Cliente cliente;
     private int parcelaFila, parcelaColumna; //Para poder comparar con las reservas de esa parcela.
     private Date fecha_entrada, fecha_salida;
+    private int posicionModificado; //Esta es una variable que usaremos al actualizar un dato de una parcela, se usa
+                                    //para saber en que posicion del ArrayList estaba para poder modificarla
     
     public Reserva(Cliente cliente, Date fecha_entrada, Date fecha_salida, int parcelaFila, int parcelaColumna){
         this.cliente = cliente;
@@ -109,4 +111,12 @@ public class Reserva {
         return getNombre() + " tiene una reserva del dia " + getFechaEntrada() + " al dia " + getFechaSalida() + " por " + calcPrecio() + " bitcoins";
     }
     */
+
+    int getPosicionAModificar() {
+        return posicionModificado;
+    }
+
+    public void setModificado(int pos) {
+        posicionModificado = pos;
+    }
 }

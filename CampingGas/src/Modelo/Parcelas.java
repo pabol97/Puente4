@@ -61,5 +61,19 @@ public class Parcelas {
             }
         }
     }
+
+    public boolean addNuevaReserva(Reserva nuevaReserva) {
+        int fila, columna;
+        fila = nuevaReserva.getFila();
+        columna = nuevaReserva.getColumna();
+        return parcelas[fila][columna].addReserva(nuevaReserva);
+    }
+
+    boolean modificaReserva(Reserva reserva) {
+        int fila, columna;
+        fila = reserva.getFila();
+        columna = reserva.getColumna();
+        return parcelas[fila][columna].modificaReserva(reserva);
+    }
     
 }

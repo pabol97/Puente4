@@ -338,7 +338,74 @@ public class AlquilerAdminView extends javax.swing.JFrame {
     private javax.swing.JTextField userClienteField;
     // End of variables declaration//GEN-END:variables
 
-    void setMiActionListener(ActionListener aL) {
+    public void setMiActionListener(ActionListener aL) {
         botonAlquilar.addActionListener(aL);
+    }
+    
+    public Reserva getReserva(boolean nuevo) {
+        String seleccion;
+        String seleccionParcela;
+        String[] partesSeleccion;
+        String[] partesFecha;
+        seleccion = listaReservas.getSelectedValue();
+        Cliente cliente;
+        Reserva nuevaReserva;
+        
+            switch(seleccion){
+                case "Nueva reserva.":
+                    //Recoges los datos introducidos
+                    userCliente = userClienteField.getText();
+                    cliente = new Cliente(userCliente);
+                    
+                    fechaIni = fechaInicioChooser.getDate();
+                    fechaFin = fechaFinChooser.getDate();
+                    
+                    seleccionParcela = (String) parcelaCombo.getSelectedItem();
+                    partesSeleccion = seleccionParcela.split(":");
+                    fila = Integer.parseInt(partesSeleccion[0]);
+                    columna = Integer.parseInt(partesSeleccion[1]);
+                    
+                    //Creas y añades la nueva reserva
+                    nuevaReserva = new Reserva(cliente, fechaIni, fechaFin, fila, columna);
+                    /*
+                    if(!listaReservaCamping[fila][columna].addReserva(nuevaReserva)){
+                        mensajeError.setVisible(true);
+                    }
+                    else{
+                        rellenarListaReservas(parcelas);
+                    }
+                    */
+                    break;
+                default:
+                    partesSeleccion = seleccion.split(":");
+                    
+                    nuevo = false; //Es una reserva ya existente, por tanto no es nueva. Como no hemos instanciado otra, es un parametro por referencia.
+                    
+                    //Recogemos los datos de la reserva.
+                    userCliente = partesSeleccion[0];
+                    partesFecha = partesSeleccion[1].split("/");
+                    fechaIni = new Date(Integer.parseInt(partesFecha[0]), Integer.parseInt(partesFecha[1]), Integer.parseInt(partesFecha[2]));
+                
+                    partesFecha = partesSeleccion[2].split("/");
+                    fechaFin = new Date(Integer.parseInt(partesFecha[0]), Integer.parseInt(partesFecha[1]), Integer.parseInt(partesFecha[2]));
+                    fila = Integer.parseInt(partesSeleccion[3]);
+                    columna = Integer.parseInt(partesSeleccion[4]);
+                    pos = Integer.parseInt(partesSeleccion[5]);
+
+                    cliente = new Cliente(userCliente);
+                    nuevaReserva = new Reserva(cliente, fechaIni, fechaFin, fila, columna);
+                    nuevaReserva.setModificado(pos);
+            }
+        
+        return nuevaReserva;
+    }
+
+    public void mostrarError() {
+        mensajeError.setVisible(true);
+    }
+
+    public void actualizarLista(Parcelas parcelas) {
+        rellenarListaReservas(parcelas);
+        mensajeError.setVisible(false);
     }
 }
