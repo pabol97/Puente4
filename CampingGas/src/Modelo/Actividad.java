@@ -19,6 +19,7 @@ public class Actividad {
     
     String tituloActividad;
     ArrayList<Cliente> clientesApuntados = new ArrayList<Cliente>();
+    ArrayList<String> parejas = new ArrayList<String>();
     Calendar fecha;
     String lugar;
     
@@ -53,5 +54,20 @@ public class Actividad {
     public String getLugar() {
         return lugar;
     }
+    
+    public ArrayList<String> emparejar() {
+        String nombre1 = "";
+        for (int i = 0; i < clientesApuntados.size(); i++){
+            if(i%2 != 0){
+                String par = nombre1 + " " + clientesApuntados.get(i).getNombre();
+                parejas.add(par);
+            }else{
+                nombre1 = clientesApuntados.get(i).getNombre();
+            }
+            if(i%2 == 0 && i == clientesApuntados.size() - 1)
+                parejas.add(nombre1);
+        }
+        return parejas;
+    }
+    
 }
-

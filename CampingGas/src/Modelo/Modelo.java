@@ -15,9 +15,13 @@ public class Modelo {
     private ListaReservas listaReservas;
     private Map<Cliente,ArrayList<Parcelas>> reservas;
     private Map<Cliente,ArrayList<Actividad>> actividades;
+    private ArrayList<Actividad> lista_actividades = new ArrayList<Actividad>();
     
     public Modelo(){
-        //Cargar datos...
+        Actividad act = new Actividad("Judo",null);
+        Actividad act2 = new Actividad("Bolos",null);
+        lista_actividades.add(act);
+        lista_actividades.add(act2);
     }
     
     public ArrayList<Reserva> getReservasCompletadas(){        
@@ -46,6 +50,15 @@ public class Modelo {
 
     public boolean modificaReserva(Reserva reserva) {
         return parcelas.modificaReserva(reserva);
+    }
+    
+    public void crearActividad(String titulo, Calendar fecha){
+        Actividad act = new Actividad(titulo,fecha);
+        lista_actividades.add(act);
+    }
+    
+    public ArrayList<Actividad> getActividades(){
+        return lista_actividades;
     }
     
 }

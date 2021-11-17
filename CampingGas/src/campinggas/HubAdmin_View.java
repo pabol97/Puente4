@@ -135,7 +135,7 @@ public class HubAdmin_View extends javax.swing.JFrame {
 
     private void botonAlquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAlquilarActionPerformed
         
-        alquilerAdmin = new AlquilerAdminView();
+        //alquilerAdmin = new AlquilerAdminView();
         alquilerAdmin.setVisible(true);
     }//GEN-LAST:event_botonAlquilarActionPerformed
 
@@ -143,7 +143,7 @@ public class HubAdmin_View extends javax.swing.JFrame {
         //Aquí no se como hacer que haga cosas en el modelo con el MVC
         //EL MODELO SOLO LO PUEDE MODIFICAR EL CONTROLADOR. En teoria.
         //historial = new HistorialAdminView(modelo);
-        historial = new HistorialAdminView();
+        //historial = new HistorialAdminView();
         historial.setVisible(true);
     }//GEN-LAST:event_botonHistorialActionPerformed
 
@@ -152,7 +152,7 @@ public class HubAdmin_View extends javax.swing.JFrame {
         //EL MODELO SOLO LO PUEDE MODIFICAR EL CONTROLADOR. En teoria.
         //Añadir un actionListener del controlador aqui??
         //pago =  new PagoAdmin(modelo);
-        pago =  new PagoAdmin();
+        //pago =  new PagoAdmin();
         pago.setVisible(true);
     }//GEN-LAST:event_botonPagoActionPerformed
 

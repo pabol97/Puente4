@@ -8,8 +8,9 @@ package campinggas;
 import Controlador.GerenteControlador_Anterior;
 import Modelo.Actividad;
 import Modelo.Cliente;
-import campinggas.emparejamientosView;
+import campinggas.EmparejamientosView;
 import java.awt.PopupMenu;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -174,8 +175,10 @@ public class VisualizarActividadesAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSancionarActionPerformed
 
     private void botonVerParejasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerParejasActionPerformed
-        emparejamientosView parejas = new emparejamientosView((Actividad)listadoActividades.get(listaActividades.getSelectedIndex()));
-        parejas.setVisible(true);
+        Actividad actividad = listadoActividades.get(listaActividades.getSelectedIndex());
+        ArrayList<String> parejas = actividad.emparejar();
+        EmparejamientosView emparejamiento = new EmparejamientosView(parejas);
+        emparejamiento.setVisible(true);
     }//GEN-LAST:event_botonVerParejasActionPerformed
 
     private void listaActividadesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaActividadesValueChanged
@@ -213,4 +216,11 @@ public class VisualizarActividadesAdmin extends javax.swing.JFrame {
     private javax.swing.JList<String> listaActividades;
     private javax.swing.JList<String> listadoApuntados;
     // End of variables declaration//GEN-END:variables
+
+void setMiActionListener(ActionListener aL) {
+        botonSancionar.addActionListener(aL);
+        botonVerParejas.addActionListener(aL);    
+        botonVolver.addActionListener(aL);
+    }
+
 }

@@ -6,7 +6,9 @@ package Controlador;
 
 import Modelo.Modelo;
 import Modelo.Reserva;
+import campinggas.ActividadesAdmin;
 import campinggas.AlquilerAdminView;
+import campinggas.CrearActividadAdmin;
 import campinggas.HubAdmin_View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -99,6 +101,30 @@ public class GerenteControlador {
                             ventanaAlquilerAdminView.actualizarLista(modelo.getParcelas());
                         }
                     }
+                    break;
+                case "crearActividad1":
+                    CrearActividadAdmin nuevaActividad = new CrearActividadAdmin();
+                    nuevaActividad.setVisible(true);
+                    break;
+                case "visualizarActividad":
+                    //VisualizarActividadesAdmin visualizarActividades = new VisualizarActividadesAdmin(gerente);
+                    //visualizarActividades.setVisible(true);
+                    break;
+                case "volver":
+                    //this.dispose();
+                    break;
+                case "gestActividadesButton":
+                    ActividadesAdmin act = new ActividadesAdmin();
+                    act.setVisible(true);
+                    break;
+                case "crearActividad":
+                    
+                    break;
+                case "Emparejamientos":
+                    
+                    break;
+                case "Sancionar":
+                    
                     break;
                 default:
                     break;

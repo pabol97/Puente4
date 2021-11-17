@@ -7,6 +7,7 @@ package campinggas;
 
 import Controlador.GerenteControlador_Anterior;
 import campinggas.ActividadesAdmin;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -19,8 +20,7 @@ public class CrearActividadAdmin extends javax.swing.JFrame {
      */
     GerenteControlador_Anterior gerente;
     
-    public CrearActividadAdmin(GerenteControlador_Anterior _gerente) {
-        gerente = _gerente;
+    public CrearActividadAdmin() {
         initComponents();
     }
 
@@ -64,6 +64,7 @@ public class CrearActividadAdmin extends javax.swing.JFrame {
 
         botonCrear.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         botonCrear.setText("CREAR");
+        botonCrear.setActionCommand("crearActividad");
         botonCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCrearActionPerformed(evt);
@@ -145,4 +146,10 @@ public class CrearActividadAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jtfTitulo;
     // End of variables declaration//GEN-END:variables
+
+    void setMiActionListener(ActionListener aL) {
+        botonCrear.addActionListener(aL);
+        botonVolver.addActionListener(aL);    
+    }
+
 }
